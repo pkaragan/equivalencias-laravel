@@ -25,11 +25,12 @@ class CreateUserTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('estado');
             $table->rememberToken();
             $table->timestamps();
             
             $table->foreign('tipo_user_id')->references('id')->on('tipo_user')
-                ->onDelete('set null')
+                ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
     }

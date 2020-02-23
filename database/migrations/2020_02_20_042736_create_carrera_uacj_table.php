@@ -15,7 +15,13 @@ class CreateCarreraUacjTable extends Migration
     {
         Schema::create('carrera_uacj', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('campus_uacj_id')->unsigned();
+            $table->string('nombre');
             $table->timestamps();
+
+            $table->foreign('campus_uacj_id')->references('id')->on('campus_uacj')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

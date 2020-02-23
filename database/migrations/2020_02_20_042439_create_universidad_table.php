@@ -15,6 +15,14 @@ class CreateUniversidadTable extends Migration
     {
         Schema::create('universidad', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('telefono');
+            $table->string('direccion');
+            $table->string('iniciales');
+            $table->string('tipo');
+            $table->string('pais');
+            $table->string('estado');
+            $table->string('ciudad');
             $table->timestamps();
         });
     }

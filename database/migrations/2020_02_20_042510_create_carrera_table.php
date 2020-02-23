@@ -15,7 +15,13 @@ class CreateCarreraTable extends Migration
     {
         Schema::create('carrera', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->bigInteger('campus_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('campus_id')->references('id')->on('campus')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

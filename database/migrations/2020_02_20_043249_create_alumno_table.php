@@ -17,11 +17,19 @@ class CreateAlumnoTable extends Migration
             $table->bigIncrements('id');
 
             $table->bigInteger('user_id')->unsigned();  
-
+            $table->bigInteger('carrera_id')->unsigned();  
+            $table->smallInteger('semestre');
             $table->string('nombre');
 
-            
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('user')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('carrera_id')->references('id')->on('carrera')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

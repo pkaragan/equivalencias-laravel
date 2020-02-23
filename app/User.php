@@ -39,6 +39,6 @@ class User extends Authenticatable
 
     public function tipo_user()
     {
-        return $this->belongsTo(Tipo_user::class);
+        return $this->belongsTo(TipoUser::class);
     }
 }

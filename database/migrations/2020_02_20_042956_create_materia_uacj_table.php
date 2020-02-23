@@ -15,7 +15,16 @@ class CreateMateriaUacjTable extends Migration
     {
         Schema::create('materia_uacj', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('carrera_uacj_id')->unsigned();
+            $table->string('nombre');
+            $table->smallInteger('creditos');
+            $table->boolean('obligatoria');
+            $table->smallInteger('semestre');
             $table->timestamps();
+
+            $table->foreign('carrera_uacj_id')->references('id')->on('carrera_uacj')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

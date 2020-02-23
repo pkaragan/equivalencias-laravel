@@ -15,6 +15,17 @@ class CreateAlumnoMateriasTable extends Migration
     {
         Schema::create('alumno_materias', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('alumno_id')->unsigned();  
+            $table->bigInteger('materia_id')->unsigned(); 
+            
+            $table->foreign('alumno_id')->references('id')->on('alumno')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('materia_id')->references('id')->on('materia')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

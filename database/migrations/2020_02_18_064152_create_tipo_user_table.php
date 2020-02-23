@@ -15,6 +15,7 @@ class CreateTipoUserTable extends Migration
     {
         Schema::create('tipo_user', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
             $table->timestamps();
         });
     }
