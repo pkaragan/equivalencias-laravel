@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alumno extends Model
 {   
+    public $table = "alumno";
     public function materia()
     {
         return $this->hasMany(Materia::class)->withTimestamps();

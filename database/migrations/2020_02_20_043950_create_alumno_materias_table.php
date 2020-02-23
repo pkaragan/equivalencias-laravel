@@ -14,7 +14,6 @@ class CreateAlumnoMateriasTable extends Migration
     public function up()
     {
         Schema::create('alumno_materias', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->bigInteger('alumno_id')->unsigned();  
             $table->bigInteger('materia_id')->unsigned(); 
             

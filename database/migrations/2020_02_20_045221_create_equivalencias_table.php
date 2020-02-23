@@ -14,7 +14,16 @@ class CreateEquivalenciasTable extends Migration
     public function up()
     {
         Schema::create('equivalencias', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigInteger('materia_uacj_id')->unsigned();  
+            $table->bigInteger('materia_id')->unsigned(); 
+            
+            $table->foreign('materia_uacj_id')->references('id')->on('materia_uacj')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('materia_id')->references('id')->on('materia')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

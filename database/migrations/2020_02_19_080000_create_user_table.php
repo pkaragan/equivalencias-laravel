@@ -17,6 +17,7 @@ class CreateUserTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->bigInteger('tipo_user_id')->unsigned();
+            $table->string('usuario');
             $table->string('nombre');
             $table->string('apellido');
             $table->string('telefono');

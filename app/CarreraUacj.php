@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CarreraUacj extends Model
 {
+    public $table = "carrera_uacj";
     public function campus()
     {
         return $this->belongsTo(CampusUacj::class)->withTimestamps();
