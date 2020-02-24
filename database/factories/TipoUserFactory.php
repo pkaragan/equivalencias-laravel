@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\TipoUser;
+use App\Models\Admin\TipoUser;
 use Faker\Generator as Faker;
 
 $factory->define(TipoUser::class, function (Faker $faker) {

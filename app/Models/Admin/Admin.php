@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models\Admin;
 
+use App\Models\Seguridad\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Model
