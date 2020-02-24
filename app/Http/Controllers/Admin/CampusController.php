@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\CampusUacj;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Campus;
 use Illuminate\Http\Request;
 
-class CampusUacjController extends Controller
+class CampusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class CampusUacjController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\CampusUacj  $campusUacj
+     * @param  \App\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function show(CampusUacj $campusUacj)
+    public function show(Campus $campus)
     {
         //
     }
@@ -52,10 +53,10 @@ class CampusUacjController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CampusUacj  $campusUacj
+     * @param  \App\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function edit(CampusUacj $campusUacj)
+    public function edit(Campus $campus)
     {
         //
     }
@@ -64,10 +65,10 @@ class CampusUacjController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CampusUacj  $campusUacj
+     * @param  \App\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CampusUacj $campusUacj)
+    public function update(Request $request, Campus $campus)
     {
         //
     }
@@ -75,10 +76,10 @@ class CampusUacjController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CampusUacj  $campusUacj
+     * @param  \App\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CampusUacj $campusUacj)
+    public function destroy(Campus $campus)
     {
         //
     }

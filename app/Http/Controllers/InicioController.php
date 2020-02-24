@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Campus;
 use Illuminate\Http\Request;
 
-class CampusController extends Controller
+class InicioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class CampusController extends Controller
      */
     public function index()
     {
-        //
+        return view('inicio');
     }
 
     /**
@@ -41,10 +40,10 @@ class CampusController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Campus  $campus
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Campus $campus)
+    public function show($id)
     {
         //
     }
@@ -52,10 +51,10 @@ class CampusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Campus  $campus
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Campus $campus)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +63,10 @@ class CampusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Campus  $campus
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Campus $campus)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +74,10 @@ class CampusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Campus  $campus
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Campus $campus)
+    public function destroy($id)
     {
         //
     }

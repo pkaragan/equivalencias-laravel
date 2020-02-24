@@ -41,15 +41,51 @@
           <i class="far fa-circle nav-icon"></i>
           Menu Principal</p>
         </a>
+          
+        <li class="nav-item {{getMenuActivo('/universidad')}}">
+            <a class="nav-link {{getMenuActivo('/universidad')}}" href="{{url('/universidad')}}">
+              <i class="nav-icon fa "></i> 
+              <p>
+                  Universidades
+              </p>
+            </a>
+        </li>
 
+        <li class="nav-item {{getMenuActivo('/uacj')}}">
+          <a class="nav-link {{getMenuActivo('/uacj')}}" href="{{url('/uacj')}}">
+            <i class="nav-icon fa "></i> 
+            <p>
+                  UACJ
+            </p>
+          </a>
+        </li>
 
-              @foreach ($menusComposer as $key => $item)
-                @if ($item["menu_id"] != 0)
-                  @break
-                @endif
-                @include("theme.$theme.menu-item", ["item" => $item])
-              @endforeach      
-        
+        <li class="nav-item {{getMenuActivo('/alumno')}}">
+          <a class="nav-link {{getMenuActivo('/alumno')}}" href="{{url('/alumno')}}">
+            <i class="nav-icon fa "></i> 
+            <p>
+                  Estudiantes
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item {{getMenuActivo('/equivalencias')}}">
+          <a class="nav-link {{getMenuActivo('/equivalencias')}}" href="{{url('/equivalencias')}}">
+            <i class="nav-icon fa "></i> 
+            <p>
+                  Equivalencias
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item {{getMenuActivo('/admin')}}">
+          <a class="nav-link {{getMenuActivo('/admin')}}" href="{{url('/admin')}}">
+            <i class="nav-icon fa "></i> 
+            <p>
+                  Administración
+            </p>
+          </a>
+        </li>                  
     </ul>
   </section>
   <!-- /.sidebar -->
