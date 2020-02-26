@@ -18,27 +18,33 @@ Route::get('seguridad/logout', 'Seguridad\LoginController@logout')->name('logout
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'superadmin']], function () {
     Route::get('', 'AdminController@index');
     /*RUTAS DE UNIVERSIDAD*/
-    Route::get('universidad', 'universidadController@index')->name('universidad');
-    Route::get('universidad/crear', 'universidadController@crear')->name('crear_universidad');
-    Route::post('universidad', 'universidadController@guardar')->name('guardar_universidad');
-    Route::get('universidad/{id}/editar', 'universidadController@editar')->name('editar_universidad');
-    Route::put('universidad/{id}', 'universidadController@actualizar')->name('actualizar_universidad');
-    Route::delete('universidad/{id}', 'universidadController@eliminar')->name('eliminar_universidad');
+    Route::get('universidad', 'UniversidadController@index')->name('universidad');
+    Route::get('universidad/crear', 'UniversidadController@crear')->name('crear_universidad');
+    Route::post('universidad', 'UniversidadController@guardar')->name('guardar_universidad');
+    Route::get('universidad/{id}/editar', 'UniversidadController@editar')->name('editar_universidad');
+    Route::put('universidad/{id}', 'UniversidadController@actualizar')->name('actualizar_universidad');
+    Route::delete('universidad/{id}', 'UniversidadController@eliminar')->name('eliminar_universidad');
     /*RUTAS DE CARRERA*/
-    Route::get('carrera', 'carreraController@index')->name('carrera');
-    Route::get('carrera/crear', 'carreraController@crear')->name('crear_carrera');
-    Route::post('carrera', 'carreraController@guardar')->name('guardar_carrera');
-    Route::get('carrera/{id}/editar', 'carreraController@editar')->name('editar_carrera');
-    Route::put('carrera/{id}', 'carreraController@actualizar')->name('actualizar_carrera');
-    Route::delete('carrera/{id}', 'carreraController@eliminar')->name('eliminar_carrera');
-<<<<<<< HEAD
+    Route::get('carrera', 'CarreraController@index')->name('carrera');
+    Route::get('carrera/crear', 'CarreraController@crear')->name('crear_carrera');
+    Route::post('carrera', 'CarreraController@guardar')->name('guardar_carrera');
+    Route::get('carrera/{id}/editar', 'CarreraController@editar')->name('editar_carrera');
+    Route::put('carrera/{id}', 'CarreraController@actualizar')->name('actualizar_carrera');
+    Route::delete('carrera/{id}', 'CarreraController@eliminar')->name('eliminar_carrera');
     /*RUTAS DE UACJ*/                      
-    Route::get('uacj', 'uacjController@index')->name('uacj');
-    Route::get('uacj/crear', 'uacjController@crear')->name('crear_uacj');
-    Route::post('uacj', 'uacjController@guardar')->name('guardar_uacj');
-    Route::get('uacj/{id}/editar', 'uacjController@editar')->name('editar_uacj');
-    Route::put('uacj/{id}', 'uacjController@actualizar')->name('actualizar_uacj');
-    Route::delete('uacj/{id}', 'uacjController@eliminar')->name('eliminar_uacj');
+    Route::get('uacj', 'CampusUacjController@index')->name('campusUacj');
+    Route::get('uacj/crear', 'CampusUacjController@crear')->name('crear_campusUacj');
+    Route::post('uacj', 'CampusUacjController@guardar')->name('guardar_campusUacj');
+    Route::get('uacj/{id}/editar', 'CampusUacjController@editar')->name('editar_campusUacj');
+    Route::put('uacj/{id}', 'CampusUacjController@actualizar')->name('actualizar_campusUacj');
+    Route::delete('uacj/{id}', 'CampusUacjController@eliminar')->name('eliminar_campusUacj');
+    /*RUTAS DE CARRERAS UACJ*/                      
+    Route::post('carreraUacj[id]', 'CarreraUacjController@index')->name('carreraUacj');
+    Route::get('carreraUacj/crear', 'CarreraUacjController@crear')->name('crear_carreraUacj');
+    Route::post('carreraUacj', 'CarreraUacjController@guardar')->name('guardar_carreraUacj');
+    Route::get('carreraUacj/{id}/editar', 'CarreraUacjController@editar')->name('editar_carreraUacj');
+    Route::put('carreraUacj/{id}', 'CarreraUacjController@actualizar')->name('actualizar_carreraUacj');
+    Route::delete('carreraUacj/{id}', 'CarreraUacjController@eliminar')->name('eliminar_carreraUacj');
     /*RUTAS DE ALUMNOS*/
     Route::get('alumno', 'alumnoController@index')->name('alumno');
     Route::get('alumno/crear', 'alumnoController@crear')->name('crear_alumno');
@@ -60,8 +66,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('admin/{id}/editar', 'adminController@editar')->name('editar_admin');
     Route::put('admin/{id}', 'adminController@actualizar')->name('actualizar_admin');
     Route::delete('admin/{id}', 'adminController@eliminar')->name('eliminar_admin');
-=======
->>>>>>> 0ab24c19736148c6d930731f338ba79e0539bc41
+
     /*RUTAS DE PERMISO*/
     Route::get('permiso', 'PermisoController@index')->name('permiso');
     Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
@@ -97,7 +102,3 @@ Route::post('libro', 'LibroController@guardar')->name('guardar_libro');
 Route::get('libro/{id}/editar', 'LibroController@editar')->name('editar_libro');
 Route::put('libro/{id}', 'LibroController@actualizar')->name('actualizar_libro');
 Route::delete('libro/{id}', 'LibroController@eliminar')->name('eliminar_libro');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -16,7 +16,8 @@ class CampusUacjController extends Controller
      */
     public function index()
     {
-        //
+        $campus = CampusUacj::orderBy('id')->get();
+        return view('admin.uacj.index', compact('campus'));
     }
 
     /**

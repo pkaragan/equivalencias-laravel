@@ -10,20 +10,21 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        factory(App\TipoUser::class)->create(['nombre'=>'Admin']);
-        factory(App\TipoUser::class)->create(['nombre'=>'Alumno']);
+    {        
+        factory(App\Models\Admin\TipoUser::class)->create(['nombre'=>'Admin']);
+        factory(App\Models\Admin\TipoUser::class)->create(['nombre'=>'Alumno']);
 
-        factory(App\User::class, 20)->create();
+        $this->call(UsuarioAdministradorSeeder::class);
 
-        factory(App\Admin::class, 15)->create();
-        factory(App\Universidad::class, 15)->create();
-        factory(App\Campus::class, 15)->create();
-        factory(App\Carrera::class, 15)->create();
-        factory(App\Materia::class, 15)->create();
-        factory(App\CampusUacj::class, 15)->create();
-        factory(App\CarreraUacj::class, 15)->create();
-        factory(App\MateriaUacj::class, 15)->create();
-        factory(App\Alumno::class, 15)->create();
+        factory(App\Models\Seguridad\User::class, 20)->create();
+
+        factory(App\Models\Admin\Admin::class, 15)->create();
+        factory(App\Models\Admin\Universidad::class, 15)->create();
+        factory(App\Models\Admin\Campus::class, 15)->create();
+        factory(App\Models\Admin\Carrera::class, 15)->create();
+        factory(App\Models\Admin\Materia::class, 15)->create();
+        factory(App\Models\Admin\CarreraUacj::class, 15)->create();
+        factory(App\Models\Admin\MateriaUacj::class, 15)->create();
+        factory(App\Models\Admin\Alumno::class, 15)->create();
     }
 }

@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section("titulo")
-Universidades
+Carreras - {{ $campus->nombre }}
 @endsection
 
 @section('contenido')
@@ -9,8 +9,8 @@ Universidades
         @include('includes.mensaje')
         <div class="card">
             <div class="card-header without-border">
-                <h3 class="card-title">Universidades</h3>
-                <a href="#" class="btn btn-info btn-sm card-tools mr-3">Agregar Universidad</a>
+                <h3 class="card-title">Carreras</h3>
+                <a href="#" class="btn btn-info btn-sm card-tools mr-3">Agregar Carreras</a>
             </div>
 
             <div class="col-md-12">
@@ -22,25 +22,19 @@ Universidades
                         <tr>
                           <th style="width: 10px">#</th>
                           <th>Nombre</th>
-                          <th>Iniciales</th>
-                          <th>Estado</th>
-                          <th>Ciudad</th>
-                          <th class="text-center">Ver carreras</th>
-                          <th class="text-center">Editar</th>
-                          <th class="text-center">Eliminar</th>
+                          <th class="text-center" style="width: 100px">Ver materias</th>
+                          <th class="text-center" style="width: 100px">Editar</th>
+                          <th class="text-center" style="width: 100px">Eliminar</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($universidad as $key => $item)
+                        @foreach ($carreras as $key => $item)
                             <tr>                                                            
                                 <td>{{$item["id"]}}.</td>
-                                <td>{{$item["nombre"]}}</td>
-                                <td>{{$item["iniciales"]}}</td>
-                                <td>{{$item["estado"]}}</td>
-                                <td>{{$item["ciudad"]}}</td>                            
+                                <td>{{$item["nombre"]}}</td>                          
                                 <td class="text-center"><a href="{{route('carrera')}}" title="Ver carreras"><i class="text-muted fa fa-graduation-cap"></i></a></td>
-                                <td class="text-center"><a href="{{route('editar_universidad', ['id' => $item["id"]])}}" title="Editar universidad"><i class="text-dark fa fa-edit"></i></a></td>
-                                <td class="text-center"><a href="{{route('eliminar_universidad', ['id' => $item["id"]])}}" title="Eliminar universidad"><i class="text-danger fa fa-trash"></i></a></td>
+                                <td class="text-center"><a href="{{route('editar_carrera', ['id' => $item["id"]])}}" title="Editar carrera"><i class="text-dark fa fa-edit"></i></a></td>
+                                <td class="text-center"><a href="{{route('eliminar_carrera', ['id' => $item["id"]])}}" title="Eliminar carrera"><i class="text-danger fa fa-trash"></i></a></td>
                             </tr>                        
                         @endforeach
                       </tbody>

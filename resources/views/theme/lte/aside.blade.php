@@ -1,7 +1,11 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="/" class="brand-link bg-gradient-primary">
+  @if (session('tipo_user_id')==1)
+    <a href="{{route('admin')}}" class="brand-link bg-gradient-primary">
+  @else
+    <a href="/" class="brand-link bg-gradient-primary">
+  @endif  
     <img src="{{asset("assets/$theme/dist/img/UACJLogoColor.png")}}"
           alt="UACJ Logo"
           class="brand-image img-circle elevation-3"
@@ -35,7 +39,7 @@
         </li>
 
         <li class="nav-item {{getMenuActivo('/uacj')}}">
-          <a class="nav-link {{getMenuActivo('/uacj')}}" href="{{route('uacj')}}">
+          <a class="nav-link {{getMenuActivo('/uacj')}}" href="{{route('campusUacj')}}">
             <i class="nav-icon fas fa-school"></i> 
             <p>
                   UACJ
