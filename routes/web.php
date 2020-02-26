@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('carrera/{id}/editar', 'carreraController@editar')->name('editar_carrera');
     Route::put('carrera/{id}', 'carreraController@actualizar')->name('actualizar_carrera');
     Route::delete('carrera/{id}', 'carreraController@eliminar')->name('eliminar_carrera');
+<<<<<<< HEAD
     /*RUTAS DE UACJ*/                      
     Route::get('uacj', 'uacjController@index')->name('uacj');
     Route::get('uacj/crear', 'uacjController@crear')->name('crear_uacj');
@@ -59,6 +60,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('admin/{id}/editar', 'adminController@editar')->name('editar_admin');
     Route::put('admin/{id}', 'adminController@actualizar')->name('actualizar_admin');
     Route::delete('admin/{id}', 'adminController@eliminar')->name('eliminar_admin');
+=======
+>>>>>>> 0ab24c19736148c6d930731f338ba79e0539bc41
     /*RUTAS DE PERMISO*/
     Route::get('permiso', 'PermisoController@index')->name('permiso');
     Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
