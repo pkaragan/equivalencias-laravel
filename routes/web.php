@@ -17,6 +17,20 @@ Route::post('seguridad/login', 'Seguridad\LoginController@login')->name('login-p
 Route::get('seguridad/logout', 'Seguridad\LoginController@logout')->name('logout');
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'superadmin']], function () {
     Route::get('', 'AdminController@index');
+    /*RUTAS DE UNIVERSIDAD*/
+    Route::get('universidad', 'universidadController@index')->name('universidad');
+    Route::get('universidad/crear', 'universidadController@crear')->name('crear_universidad');
+    Route::post('universidad', 'universidadController@guardar')->name('guardar_universidad');
+    Route::get('universidad/{id}/editar', 'universidadController@editar')->name('editar_universidad');
+    Route::put('universidad/{id}', 'universidadController@actualizar')->name('actualizar_universidad');
+    Route::delete('universidad/{id}', 'universidadController@eliminar')->name('eliminar_universidad');
+    /*RUTAS DE CARRERA*/
+    Route::get('carrera', 'carreraController@index')->name('carrera');
+    Route::get('carrera/crear', 'carreraController@crear')->name('crear_carrera');
+    Route::post('carrera', 'carreraController@guardar')->name('guardar_carrera');
+    Route::get('carrera/{id}/editar', 'carreraController@editar')->name('editar_carrera');
+    Route::put('carrera/{id}', 'carreraController@actualizar')->name('actualizar_carrera');
+    Route::delete('carrera/{id}', 'carreraController@eliminar')->name('eliminar_carrera');
     /*RUTAS DE PERMISO*/
     Route::get('permiso', 'PermisoController@index')->name('permiso');
     Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
@@ -52,3 +66,7 @@ Route::post('libro', 'LibroController@guardar')->name('guardar_libro');
 Route::get('libro/{id}/editar', 'LibroController@editar')->name('editar_libro');
 Route::put('libro/{id}', 'LibroController@actualizar')->name('actualizar_libro');
 Route::delete('libro/{id}', 'LibroController@eliminar')->name('eliminar_libro');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

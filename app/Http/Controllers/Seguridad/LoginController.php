@@ -25,7 +25,6 @@ class LoginController extends Controller
     {      
         if ($user['tipo_user_id']==1) {
             $user->setSession($user);
-            dd(session());
         } else {
             $this->guard()->logout();
             $request->session()->invalidate();
