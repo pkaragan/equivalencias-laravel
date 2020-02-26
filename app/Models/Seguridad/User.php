@@ -23,11 +23,13 @@ class User extends Authenticatable
         if ($user['tipo_user_id']==1) {
             Session::put(
                 [
-                    'tipo_user_id' => $user['id'],
-                    'tipo_user_nombre' => $user->tipo_user('nombre')->get(),
+                    'tipo_user_id' => $user->tipo_user->id,
+                    'tipo_user_nombre' => $user->tipo_user->nombre,
                     'usuario' => $this->usuario,
                     'usuario_id' => $this->id,
-                    'nombre_usuario' => $this->nombre
+                    'nombre_usuario' => $this->nombre,
+                    'apellido_usuario' => $this->apellido,
+                    'nombre_completo' => $this->nombre.' '.$this->apellido
                 ]
             );
         }

@@ -1,8 +1,8 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="/" class="brand-link bg-gradient-info">
-    <img src="{{asset("assets/$theme/dist/img/UACJLogo.png")}}"
+  <a href="/" class="brand-link bg-gradient-primary">
+    <img src="{{asset("assets/$theme/dist/img/UACJLogoColor.png")}}"
           alt="UACJ Logo"
           class="brand-image img-circle elevation-3"
           >
@@ -17,7 +17,7 @@
         <img src="{{asset("assets/$theme/dist/img/user2-160x160.jpg")}}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">{{session()->get('nombre_usuario') ?? 'Invitado'}}</a>
+        <a href="#" class="d-block">{{session()->get('nombre_completo') ?? 'Invitado'}}</a>
       </div>
     </div>
 
@@ -26,7 +26,7 @@
       <li class="nav-item">
           
         <li class="nav-item {{getMenuActivo('/universidad')}}">
-            <a class="nav-link {{getMenuActivo('/universidad')}}" href="{{url('/universidad')}}">
+            <a class="nav-link {{getMenuActivo('/universidad')}}" href="{{route('universidad')}}">
               <i class="nav-icon fas fa-university"></i> 
               <p>
                   Universidades
@@ -35,7 +35,7 @@
         </li>
 
         <li class="nav-item {{getMenuActivo('/uacj')}}">
-          <a class="nav-link {{getMenuActivo('/uacj')}}" href="{{url('/uacj')}}">
+          <a class="nav-link {{getMenuActivo('/uacj')}}" href="{{route('uacj')}}">
             <i class="nav-icon fas fa-school"></i> 
             <p>
                   UACJ
@@ -44,7 +44,7 @@
         </li>
 
         <li class="nav-item {{getMenuActivo('/alumno')}}">
-          <a class="nav-link {{getMenuActivo('/alumno')}}" href="{{url('/alumno')}}">
+          <a class="nav-link {{getMenuActivo('/alumno')}}" href="{{route('alumno')}}">
             <i class="nav-icon fas fa-users"></i> 
             <p>
                   Estudiantes
@@ -53,7 +53,7 @@
         </li>
 
         <li class="nav-item {{getMenuActivo('/equivalencias')}}">
-          <a class="nav-link {{getMenuActivo('/equivalencias')}}" href="{{url('/equivalencias')}}">
+          <a class="nav-link {{getMenuActivo('/equivalencias')}}" href="{{route('equivalencias')}}">
             <i class="nav-icon fas fa-equals"></i> 
             <p>
                   Equivalencias
@@ -62,7 +62,7 @@
         </li>
 
         <li class="nav-item {{getMenuActivo('/admin')}}">
-          <a class="nav-link {{getMenuActivo('/admin')}}" href="{{url('/admin')}}">
+          <a class="nav-link {{getMenuActivo('/admin')}}" href="{{route('admin')}}">
             <i class="nav-icon fas fa-user-cog"></i> 
             <p>
                   Administración
