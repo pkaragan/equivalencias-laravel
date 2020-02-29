@@ -19,11 +19,11 @@ class Carrera extends Model
 
     public function campus()
     {
-        return $this->belongsTo(Campus::class)->withTimestamps();
+        return $this->belongsTo(Campus::class);
     }    
 
-    public function universidad()
+  /*  public function universidad()
     {
         return $this->hasOneThrough(Universidad::class, Campus::class);
-    }
+    }*/
 }

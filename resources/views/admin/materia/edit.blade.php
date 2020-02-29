@@ -1,10 +1,10 @@
 @extends("theme.$theme.layout")
 @section('titulo')
-    Crear Permiso
+    Permisos
 @endsection
     
 @section('scripts')
-  <script src="{{asset("assets/pages/scripts/admin/permiso/crear.js")}}" type="text/javascript"></script>
+  <script src="{{asset("assets/pages/scripts/admin/permiso/crear.js")}}" type="text/javascript"></script>    
 @endsection
 
 @section('contenido')
@@ -17,15 +17,16 @@
 
       <div class="card card-border-danger">
         <div class="card-header">
-          <h3 class="card-title">Crear Permiso</h3>
+          <h3 class="card-title">Editar Permisos {{$data->nombre}}</h3>
             <div class="card-tools pull-right">
               <a href="{{route('permiso')}}" class="btn btn-block btn-default btn-sm">
                   <i class="fa fa-fw fa-reply-all"></i> Volver al listado
               </a>
             </div>
         </div>
-        <form action="{{route('guardar_permiso')}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
-          @csrf 
+        <form action="{{route('actualizar_permiso', ['id' =>$data->id])}}" id="form-general" class="form-horizontal" method="post" autocomplete="off">
+          @csrf
+          @method('put')
           <!-- /.card-header -->
           <div class="card-body">
 
@@ -36,7 +37,8 @@
           <div class="card-footer">
             <div class="col-lg-10 float-right">              
 
-              @include('includes.boton-form-crear', ['regresar' => 'permiso'])
+
+              @include('includes.boton-form-editar', ['regresar' => 'permiso'])
 
             </div>
           </div>

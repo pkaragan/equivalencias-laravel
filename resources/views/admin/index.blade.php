@@ -20,7 +20,7 @@ Administrador
                 <div class="icon">
                   <i class="fas fa-university"></i>
                 </div>
-              <a href="{{ route ('universidad')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route ('universidad.index')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -35,7 +35,7 @@ Administrador
                 <div class="icon">
                   <i class="fas fa-school"></i>
                 </div>
-                <a href="{{ route ('campusUacj')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route ('uacj.index')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -50,7 +50,7 @@ Administrador
                 <div class="icon">
                   <i class="fas fa-users"></i>
                 </div>
-                <a href="{{ route ('universidad')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route ('universidad.index')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -65,7 +65,7 @@ Administrador
                 <div class="icon">
                   <i class="fas fa-equals"></i>
                 </div>
-                <a href="{{ route ('universidad')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route ('universidad.index')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -80,7 +80,7 @@ Administrador
                 <div class="icon">
                   <i class="fas fa-user-cog"></i>
                 </div>
-                <a href="{{ route ('universidad')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route ('universidad.index')}}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->

@@ -7,20 +7,46 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('admin.index');
+        return view('admin.admin.index');
     }
 
-    public function crear()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         return view('admin.admin.crear');
     }
 
-    public function guardar(ValidacionMenu $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        Menu::create($request->all());
-        return redirect('admin/menu/crear')->with('mensaje', 'Menú creado con exito');
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
     /**
@@ -29,10 +55,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function editar($id)
+    public function edit($id)
     {
-        $data=Menu::findOrFail($id);
-        return view('admin.menu.editar', compact('data'));
+        //
     }
 
     /**
@@ -42,10 +67,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(ValidacionMenu $request, $id)
+    public function update(Request $request, $id)
     {
-        Menu::findOrFail($id)->update($request->all());
-        return redirect('admin/menu')->with('mensaje', 'Menú actualizado con exito');
+        //
     }
 
     /**
@@ -54,20 +78,8 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function eliminar($id)
+    public function destroy($id)
     {
-        Menu::destroy($id);
-        return redirect('admin/menu')->with('mensaje', 'Menú eliminado con éxito');
-    }
-
-    public function guardarOrden(Request $request)
-    {
-        if ($request->ajax()) {
-            $menu = new Menu;
-            $menu->guardarOrden($request->menu);
-            return response()->json(['respuesta' => 'ok']);
-        } else {
-            abort(404);
-        }
+        //
     }
 }

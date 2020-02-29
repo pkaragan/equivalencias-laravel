@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section("titulo")
-Carreras - {{ $carrera->campusUacj['nombre'] }}
+Materias - {{ $carrera->campusUacj['nombre'] }}
 @endsection
 
 @section('contenido')

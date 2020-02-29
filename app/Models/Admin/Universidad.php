@@ -5,8 +5,9 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 
 class Universidad extends Model
-{
+{       
     protected $table = "universidad";
+    
     protected $fillable = ['nombre', 'telefono', 'direccion', 'iniciales', 'tipo', 'pais', 'estado', 'ciudad'];
     protected $guarded = ['id'];
 

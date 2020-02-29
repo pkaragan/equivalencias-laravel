@@ -2,43 +2,69 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
+use App\Quotation;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\CampusUacj;
+use App\Models\Admin\Carrera;
 use App\Models\Admin\CarreraUacj;
 use Illuminate\Http\Request;
-use App\Http\Requests\ValidarCarreraUacj;
-use App\Models\Admin\CampusUacj;
 
 class CarreraUacjController extends Controller
 {
-    public function index($id)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $carreras = CarreraUacj::orderBy('id')->get();
-
-        $campus = CarreraUacj::campusUacj($id);
-        
-        return view('admin.carrera-uacj.index', compact('carreras', 'campus'));        
+        return ('hola');
     }
 
-    public function crear()
-    {
-        return view('admin.carrera-uacj.crear');
-    }
-
-    public function guardar(ValidarCarreraUacj $request)
-    {
-        CarreraUacj::create($request->all());
-        return redirect('admin/carrera-uacj/crear')->with('mensaje', 'Carrera creada con exito');
-    }
-
-    public function mostrar($id)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         //
     }
 
-    public function editar($id)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $data = CarreraUacj::findOrFail($id);
-        return view('admin.carrera-uacj.editar', compact('data'));
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {        
+        $carreras=CarreraUacj::where('campus_uacj_id',"=",$id)->get();
+        $carrera=CarreraUacj::findOrFail($id);
+        return view('admin.carrera-uacj.index', compact('carreras', 'carrera'));      
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -48,10 +74,9 @@ class CarreraUacjController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(ValidarCarreraUacj $request, $id)
+    public function update(Request $request, $id)
     {
-        CarreraUacj::findOrFail($id)->update($request->all());
-        return redirect('admin/CarreraUacj')->with('mensaje', 'Carrera actualizada con exito');
+        //
     }
 
     /**
@@ -60,16 +85,8 @@ class CarreraUacjController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function eliminar(Request $request, $id)
+    public function destroy($id)
     {
-        if ($request->ajax()) {
-            if (CarreraUacj::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
-            } else {
-                return response()->json(['mensaje' => 'ng']);
-            }
-        } else {
-            abort(404);
-        }
+        //
     }
 }

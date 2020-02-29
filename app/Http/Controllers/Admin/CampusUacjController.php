@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\Admin\CampusUacj;
+use App\Http\Requests\ValidarCampusUacj;
 use Illuminate\Http\Request;
 
 class CampusUacjController extends Controller
@@ -27,7 +28,7 @@ class CampusUacjController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.uacj.create');
     }
 
     /**
@@ -36,9 +37,10 @@ class CampusUacjController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidarCampusUacj $request)
     {
-        //
+        CampusUacj::create($request->all());
+        return redirect('admin/uacj/create')->with('mensaje', 'Campus creado con exito');
     }
 
     /**
