@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Campus;
+use App\Models\Admin\Universidad;
 use Illuminate\Http\Request;
 
 class CampusController extends Controller
@@ -25,7 +26,8 @@ class CampusController extends Controller
      */
     public function create()
     {
-        //
+        $universidades = Universidad::orderBy('id')->get();
+        return view('admin.campus.create', compact('universidades'));
     }
 
     /**

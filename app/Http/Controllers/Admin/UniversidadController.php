@@ -31,7 +31,7 @@ class UniversidadController extends Controller
      */
     public function create()
     {
-        return view('admin.universidad.create');
+        return view('admin.campus.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class UniversidadController extends Controller
     public function store(Request $request)
     {
         Universidad::create($request->all());
-        return redirect('admin/universidad/crear')->with('mensaje', 'Universidad creada con exito');
+        return redirect('admin/universidad/create')->with('mensaje', 'Universidad creada con exito');
     }
 
     /**

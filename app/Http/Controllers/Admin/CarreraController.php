@@ -49,17 +49,12 @@ class CarreraController extends Controller
      */
     public function show($id)
     {
+        $campus = Campus::findOrFail($id);
+
         $carreras=Carrera::where('campus_id',"=",$id)->get();
-        $carrera=Carrera::findOrFail($id);
 
-        $uni= new Universidad;
-
-        $universidad = $uni
-        ->where('id','=',$id)->pluck('nombre');
-        
-        
-        //$universidad=Universidad::
-        return view('admin.carrera.index', compact('carreras', 'carrera', 'universidad'));      
+        $universidad = Universidad::findOrFail($campus->universidad_id);
+        return view('admin.carrera.index', compact('carreras', 'campus', 'universidad'));      
     }
 
     /**

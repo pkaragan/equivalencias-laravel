@@ -22,11 +22,12 @@ class CreateCampusTable extends Migration
             $table->string('estado');
             $table->string('ciudad');
             $table->string('calle')->nullable();
-            $table->string('numero')->nullable();
+            $table->integer('numero')->nullable();
+            $table->string('numero-int')->nullable();
             $table->string('colonia')->nullable();
             $table->integer('cp')->nullable();
             $table->string('telefono')->nullable();
-            $table->integer('ext')->nullable();
+            $table->string('ext')->nullable();
             $table->bigInteger('universidad_id')->unsigned();
             $table->timestamps();
 

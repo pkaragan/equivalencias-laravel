@@ -17,26 +17,26 @@
 
       <div class="card card-border-danger">
         <div class="card-header">
-          <h3 class="card-title">Crear Menús</h3>
+          <h3 class="card-title">Crear Nuevo Campus</h3>
             <div class="card-tools pull-right">
-              <a href="{{route('menu')}}" class="btn btn-block btn-default btn-sm">
+              <a href="{{route('admin.index')}}" class="btn btn-block btn-default btn-sm">
                   <i class="fa fa-fw fa-reply-all"></i> Volver al listado
               </a>
             </div>
         </div>
-        <form action="{{route('guardar_menu')}}" id="form-general" class="form-horizontal" method="post" autocomplete="off">
+        <form action="{{route('universidad.store')}}" id="form-general" class="form-horizontal" method="post" autocomplete="off">
           @csrf
           <!-- /.card-header -->
           <div class="card-body">
 
-              @include('admin.menu.form')
+              @include('admin.universidad.form')
 
           </div>
           
           <div class="card-footer">
             <div class="col-lg-10 float-right">              
 
-              @include('includes.boton-form-crear', ['regresar' => 'menu'])
+              @include('includes.boton-form-crear', ['regresar' => 'admin.index'])
 
             </div>
           </div>

@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section('titulo')
-    Crear Campus UACJ
+    Crear Nuevo Campus
 @endsection
     
 @section('scripts')
@@ -17,29 +17,21 @@
 
       <div class="card card-border-danger">
         <div class="card-header">
-          <h3 class="card-title">Crear Campus UACJ</h3>
+          
             <div class="card-tools pull-right">
-              <a href="{{route('uacj.index')}}" class="btn btn-block btn-default btn-sm">
+              <a href="{{route('universidad.index')}}" class="btn btn-block btn-default btn-sm">
                   <i class="fa fa-fw fa-reply-all"></i> Volver al listado
               </a>
             </div>
         </div>
-        <form action="{{route('uacj.store')}}" id="form-general" class="form-horizontal" method="post" autocomplete="off">
+        <form action="{{route('universidad.store')}}" id="form-general" class="form-horizontal" method="post" autocomplete="off">
           @csrf
           <!-- /.card-header -->
           <div class="card-body">
 
-              @include('admin.uacj.form')
+              @include('admin.campus.form')              
 
-          </div>
-          
-          <div class="card-footer">
-            <div class="col-lg-10 float-right">              
-
-              @include('includes.boton-form-crear', ['regresar' => 'uacj.index'])
-
-            </div>
-          </div>
+          </div>                    
 
         </form>      
       </div>
