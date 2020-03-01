@@ -55,8 +55,8 @@ class CarreraController extends Controller
         $uni= new Universidad;
 
         $universidad = $uni
-        ->select('universidad.nombre')
-        ->where('id','=',$id);
+        ->where('id','=',$id)->pluck('nombre');
+        
         
         //$universidad=Universidad::
         return view('admin.carrera.index', compact('carreras', 'carrera', 'universidad'));      

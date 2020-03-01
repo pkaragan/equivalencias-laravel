@@ -14,6 +14,8 @@ class CreateAdminTable extends Migration
     public function up()
     {
         Schema::create('admin', function (Blueprint $table) {
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish2_ci';
             $table->bigIncrements('id');
 
             $table->bigInteger('user_id')->unsigned();  

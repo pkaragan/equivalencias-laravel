@@ -14,6 +14,8 @@ class CreateEquivalenciasTable extends Migration
     public function up()
     {
         Schema::create('equivalencias', function (Blueprint $table) {
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish2_ci';
             $table->bigInteger('materia_uacj_id')->unsigned();  
             $table->bigInteger('materia_id')->unsigned(); 
             

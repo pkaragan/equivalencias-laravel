@@ -14,6 +14,8 @@ class CreateAlumnoMateriasTable extends Migration
     public function up()
     {
         Schema::create('alumno_materias', function (Blueprint $table) {
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish2_ci';
             $table->bigInteger('alumno_id')->unsigned();  
             $table->bigInteger('materia_id')->unsigned(); 
             

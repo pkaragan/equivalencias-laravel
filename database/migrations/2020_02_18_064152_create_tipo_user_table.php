@@ -14,6 +14,8 @@ class CreateTipoUserTable extends Migration
     public function up()
     {
         Schema::create('tipo_user', function (Blueprint $table) {
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish2_ci';
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->timestamps();

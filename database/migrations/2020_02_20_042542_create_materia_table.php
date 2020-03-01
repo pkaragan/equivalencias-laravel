@@ -14,6 +14,8 @@ class CreateMateriaTable extends Migration
     public function up()
     {
         Schema::create('materia', function (Blueprint $table) {
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish2_ci';
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->bigInteger('carrera_id')->unsigned();
