@@ -24,8 +24,10 @@ class ValidarUniversidad extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|max:50|unique:permiso,nombre,'.$this->route('id'),
-            'slug' => 'required|max:50|unique:permiso,slug,'.$this->route('id'),
+            'nombre' => 'required|string|max:50|unique:universidad,nombre,'.$this->route('id'),
+            'iniciales' => 'required|string|max:15,',
+            'tipo' => 'required|string|in:privada,publica',
+            'pais' => 'required|string|max:50,',
         ];
     }
 }

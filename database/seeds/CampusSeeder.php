@@ -12,7 +12,7 @@ class CampusSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('campus')->insert([            
+        DB::table('campus')->insert([
             'nombre'=>'CAMPUS I',
             'iniciales'=>'C1',
             'estado'=>'Chihuahua',
@@ -28,13 +28,12 @@ class CampusSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('campus')->insert([            
+        DB::table('campus')->insert([
             'nombre'=>'CAMPUS II',
             'iniciales'=>'C2',
             'estado'=>'Chihuahua',
             'ciudad'=>'Ciudad Juárez',
             'calle'=>'Av. José De Jesús Macías Delgado',
-            'numero'=>s/n,            
             'colonia'=>'Ciudad del Conocimiento',
             'telefono'=>'656 688 2500',
             'universidad_id'=>1,
@@ -43,7 +42,7 @@ class CampusSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('campus')->insert([            
+        DB::table('campus')->insert([
             'nombre'=>'CAMPUS JUÁREZ',
             'iniciales'=>'CJ',
             'estado'=>'Chihuahua',
@@ -58,7 +57,7 @@ class CampusSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('campus')->insert([            
+        DB::table('campus')->insert([
             'nombre'=>'Ciudad Juárez',
             'iniciales'=>'CJ',
             'estado'=>'Chihuahua',
@@ -73,7 +72,7 @@ class CampusSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('campus')->insert([            
+        DB::table('campus')->insert([
             'nombre'=>'CAMPUS CIUDAD JUÁREZ',
             'iniciales'=>'CCJ',
             'estado'=>'Chihuahua',
@@ -88,7 +87,7 @@ class CampusSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('campus')->insert([            
+        DB::table('campus')->insert([
             'nombre'=>'CAMPUS CIUDAD JUÁREZ',
             'iniciales'=>'CCJ',
             'estado'=>'Chihuahua',

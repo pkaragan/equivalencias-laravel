@@ -11,7 +11,7 @@ class CampusUacjSeeder extends Seeder
      * @return void
      */
     public function run()
-    {        
+    {
         DB::table('campus_uacj')->insert([
             'id'=>1,
             'nombre'=>'Instituto de Ingeniería y Tecnología',
@@ -19,10 +19,10 @@ class CampusUacjSeeder extends Seeder
             'estado'=>'Chihuahua',
             'ciudad'=>'Ciudad Juárez',
             'calle'=>'Av del Charro',
-            'numero'=>'402',
+            'numero'=>402,
             'colonia'=>'Col. Partido Romero',
             'cp'=>32584,
-            'telefono'=>'656 688 4843',                   
+            'telefono'=>'656 688 4843',
             'ext'=>4817,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -35,10 +35,10 @@ class CampusUacjSeeder extends Seeder
             'estado'=>'Chihuahua',
             'ciudad'=>'Ciudad Juárez',
             'calle'=>'Av del Charro',
-            'numero'=>'450',
+            'numero'=>450,
             'colonia'=>'Col. Partido Romero',
             'cp'=>32584,
-            'telefono'=>'656 688 4820',                   
+            'telefono'=>'656 688 4820',
             'ext'=>4923,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -51,10 +51,10 @@ class CampusUacjSeeder extends Seeder
             'estado'=>'Chihuahua',
             'ciudad'=>'Ciudad Juárez',
             'calle'=>'Av. Benjamín Franklin',
-            'numero'=>'4650',
+            'numero'=>4650,
             'colonia'=>'Zona PRONAF',
             'cp'=>32310,
-            'telefono'=>'656 688 1800',                   
+            'telefono'=>'656 688 1800',
             'ext'=>1687,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -67,10 +67,9 @@ class CampusUacjSeeder extends Seeder
             'estado'=>'Chihuahua',
             'ciudad'=>'Ciudad Juárez',
             'calle'=>' Av. Universidad',
-            'numero'=>'s/n',
             'colonia'=>'Zona Chamizal',
             'cp'=>32300,
-            'telefono'=>'656 688 3800',                   
+            'telefono'=>'656 688 3800',
             'ext'=>3820,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -83,10 +82,10 @@ class CampusUacjSeeder extends Seeder
             'estado'=>'Chihuahua',
             'ciudad'=>'Nuevo Casas Grandes',
             'calle'=>'Av. Universidad',
-            'numero'=>'3003',
+            'numero'=>3003,
             'colonia'=>'Ejido Hidalgo',
             'cp'=>31803,
-            'telefono'=>'636 692 9800',                   
+            'telefono'=>'636 692 9800',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
