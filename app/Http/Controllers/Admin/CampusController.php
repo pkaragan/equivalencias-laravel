@@ -38,7 +38,8 @@ class CampusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Campus::create($request->all());
+        return redirect('admin/campus/create')->with('mensaje', 'Universidad creada con exito');
     }
 
     /**

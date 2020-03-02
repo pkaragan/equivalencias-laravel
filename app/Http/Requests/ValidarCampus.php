@@ -34,7 +34,7 @@ class ValidarCampusUacj extends FormRequest
             'numero-int' => 'nullable|string|max:10',
             'colonia' => 'nullable|string|max:100',
             'cp' => 'nullable|numeric|digits:5',
-            'telefono' => 'nullable|phone|max:15',
+            'telefono' => 'nullable|tel|max:15',
             'ext' => 'nullable|string|max:10',
         ];
     }
