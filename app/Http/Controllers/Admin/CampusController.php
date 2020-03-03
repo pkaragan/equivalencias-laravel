@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidarCampus;
 use App\Models\Admin\Campus;
 use App\Models\Admin\Universidad;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class CampusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidarCampus $request)
     {
         Campus::create($request->all());
         return redirect('admin/campus/create')->with('mensaje', 'Universidad creada con exito');
@@ -69,9 +70,12 @@ class CampusController extends Controller
      * @param  \App\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function edit(Campus $campus)
+    public function edit($id)
     {
-        //
+        $campus = Campus::orderBy('id')->pluck('nombre', 'id')->toArray();
+        $universidad = Universidad::orderBy('id')->pluck('nombre', 'id')->toArray();
+        $data = Usuario::with('roles')->findOrFail($id);
+        return view('admin.usuario.editar', compact('data', 'rols'));
     }
 
     /**
