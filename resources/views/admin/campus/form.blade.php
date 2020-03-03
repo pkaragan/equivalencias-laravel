@@ -50,7 +50,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-school"></i></span>
                 </div>
-                <input type="text" name="universidad" id="universidad" class="form-control" placeholder="Nombre de la institución">
+                <input type="text" name="universidad" id="universidad" value="{{old('universidad', $data->universidad ?? '')}}" class="form-control" placeholder="Nombre de la institución">
             </div>
 
             <div class="row">

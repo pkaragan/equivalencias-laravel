@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidarUniversidad;
 use App\Models\Admin\Universidad;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,7 @@ class UniversidadController extends Controller
         ->join('campus','universidad.id','=','campus.universidad_id')
         ->get();
 
-        return view('admin.universidad.index', compact('universidades'));      
+        return view('admin.universidad.index', compact('universidades'));
     }
 
     /**
@@ -40,7 +41,7 @@ class UniversidadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidarUniversidad $request)
     {
         Universidad::create($request->all());
         return redirect('admin/universidad/create')->with('mensaje', 'Universidad creada con exito');
@@ -54,7 +55,7 @@ class UniversidadController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
