@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Campus;
 use App\Models\Admin\Universidad;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class CampusController extends Controller
 {
@@ -40,6 +41,15 @@ class CampusController extends Controller
     {
         Campus::create($request->all());
         return redirect('admin/campus/create')->with('mensaje', 'Universidad creada con exito');
+
+        $universidad = new Universidad;
+        $universidad->nombre = Input::get('nombre');
+
+        $universidad->save();
+
+        $campus = new Campus;
+
+        $campus->save();
     }
 
     /**

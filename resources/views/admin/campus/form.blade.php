@@ -122,7 +122,7 @@
                 </div>
             </div>
 
-            <div class="input-group mb-3 col-sm-8">
+            <div class="input-group mb-3 col-sm-6">
                 <!-- calle -->
                 <input type="text" class="form-control" name="calle" id="calle" placeholder="Calle">
                 <div class="input-group-append">
@@ -130,17 +130,17 @@
                 </div>
             </div>
 
-            <div class="input-group mb-3 col-sm-2">
+            <div class="input-group mb-3 col-sm-3">
                 <!-- numero interior -->
-                <input type="number" class="form-control" name="numero" id="numero" placeholder="Numero">
+                <input type="number" class="form-control" name="numero" id="numero" placeholder="Num int">
                 <div class="input-group-append">
                     <span class="input-group-text"><i class="fas fa-list-ol"></i></span>
                 </div>
             </div>
 
-            <div class="input-group mb-3 col-sm-2">
+            <div class="input-group mb-3 col-sm-3">
                 <!-- numero exterior -->
-                <input type="number" class="form-control" name="numero-ext" id="numero-ext" placeholder="Num ext">
+                <input type="number" class="form-control" name="numero-int" id="numero-int" placeholder="Num ext">
                 <div class="input-group-append">
                     <span class="input-group-text"><i class="fas fa-sort-numeric-up"></i></span>
                 </div>

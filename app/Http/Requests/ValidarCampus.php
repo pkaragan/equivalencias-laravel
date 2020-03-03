@@ -26,7 +26,7 @@ class ValidarCampusUacj extends FormRequest
     {
         return [
             'nombre' => 'required|string|max:100',
-            'iniciales' => 'required|string|max:10',
+            'iniciales-campus' => 'required|string|max:10',
             'estado' => 'required|string|max:100',
             'ciudad' => 'required|string|max:100',
             'calle' => 'nullable|string|max:100',
@@ -35,7 +35,7 @@ class ValidarCampusUacj extends FormRequest
             'colonia' => 'nullable|string|max:100',
             'cp' => 'nullable|numeric|digits:5',
             'telefono' => 'nullable|tel|max:15',
-            'ext' => 'nullable|string|max:10',
+            'extension' => 'nullable|string|max:10',
         ];
     }
 }
