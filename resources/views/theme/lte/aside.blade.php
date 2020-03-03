@@ -25,8 +25,8 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <li class="nav-item">
           
-        <li class="nav-item {{getMenuActivo('/universidad')}}">
-            <a class="nav-link {{getMenuActivo('/universidad')}}" href="{{route('universidad.index')}}">
+        <li class="nav-item {{getMenuActivo('/campus')}}">
+            <a class="nav-link {{getMenuActivo('/campus')}}" href="{{route('campus.index')}}">
               <i class="nav-icon fas fa-university"></i> 
               <p>
                   Universidades

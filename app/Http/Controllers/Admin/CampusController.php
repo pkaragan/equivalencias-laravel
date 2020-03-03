@@ -18,7 +18,13 @@ class CampusController extends Controller
      */
     public function index()
     {
-        //
+        $universidad = new Universidad;
+        $universidades = $universidad
+        ->select('universidad.id as id', 'universidad.nombre as nombre', 'universidad.iniciales as iniciales', 'campus.nombre as campus', 'campus.id as campus_id')
+        ->join('campus','universidad.id','=','campus.universidad_id')
+        ->get();
+
+        return view('admin.campus.index', compact('universidades'));
     }
 
     /**
@@ -40,17 +46,44 @@ class CampusController extends Controller
      */
     public function store(ValidarCampus $request)
     {
-        Campus::create($request->all());
-        return redirect('admin/campus/create')->with('mensaje', 'Universidad creada con exito');
+        if($request['radio-universidad']=='existente'){
+            Campus::create([
+                'nombre'=>$request['nombre'],
+                'iniciales'=>$request['iniciales'],
+                'estado'=>$request['estado'],
+                'ciudad'=>$request['ciudad'],
+                'calle'=>$request['calle'],
+                'numero'=>$request['numero'],
+                'colonia'=>$request['colonia'],
+                'cp'=>$request['cp'],
+                'telefono'=>$request['telefono'],
+                'ext'=>$request['ext'],
+                'universidad_id'=>$request['select-uni']
+            ]);
+        }else{
+            $universidad = Universidad::create([
+                'nombre'=>$request['uni-nombre'],
+                'iniciales'=>$request['uni-iniciales'],
+                'tipo'=>$request['uni-tipo'],
+                'pais'=>$request['uni-pais'],
+            ]);
+            
+            Campus::create([
+                'nombre'=>$request['nombre'],
+                'iniciales'=>$request['iniciales'],
+                'estado'=>$request['estado'],
+                'ciudad'=>$request['ciudad'],
+                'calle'=>$request['calle'],
+                'numero'=>$request['numero'],
+                'colonia'=>$request['colonia'],
+                'cp'=>$request['cp'],
+                'telefono'=>$request['telefono'],
+                'ext'=>$request['ext'],
+                'universidad_id'=>$universidad->id
+            ]);
+        }        
 
-        $universidad = new Universidad;
-        $universidad->nombre = Input::get('nombre');
-
-        $universidad->save();
-
-        $campus = new Campus;
-
-        $campus->save();
+        return redirect('admin/campus/')->with('mensaje', 'Campus creado con exito');
     }
 
     /**
@@ -72,10 +105,8 @@ class CampusController extends Controller
      */
     public function edit($id)
     {
-        $campus = Campus::orderBy('id')->pluck('nombre', 'id')->toArray();
-        $universidad = Universidad::orderBy('id')->pluck('nombre', 'id')->toArray();
-        $data = Usuario::with('roles')->findOrFail($id);
-        return view('admin.usuario.editar', compact('data', 'rols'));
+        $campus = Campus::with('universidad')->findOrFail($id);
+        return view('admin.campus.edit', compact('campus'));
     }
 
     /**
@@ -85,9 +116,24 @@ class CampusController extends Controller
      * @param  \App\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Campus $campus)
+    public function update(ValidarCampus $request, $id)
     {
-        //
+        if($request['edit']=='edit'){
+            Campus::findOrFail($id)->update([
+                'nombre'=>$request['nombre'],
+                'iniciales'=>$request['iniciales'],
+                'estado'=>$request['estado'],
+                'ciudad'=>$request['ciudad'],
+                'calle'=>$request['calle'],
+                'numero'=>$request['numero'],
+                'colonia'=>$request['colonia'],
+                'cp'=>$request['cp'],
+                'telefono'=>$request['telefono'],
+                'ext'=>$request['ext'],
+            ]);        
+        }        
+
+        return redirect('admin/campus')->with('mensaje', 'Campus creado con exito');
     }
 
     /**
@@ -96,8 +142,16 @@ class CampusController extends Controller
      * @param  \App\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Campus $campus)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            if (Campus::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 }

@@ -11,7 +11,7 @@ Carreras - {{$universidad->nombre}} - {{ $campus->nombre}}
             <div class="card-header without-border">              
                 <h3 class="card-title">Carreras - {{ $universidad->nombre }} - {{ $campus->nombre }} </h3>
                 <a href="#" class="btn btn-info btn-sm card-tools mr-3">Agregar Carreras</a>
-                <a href="{{route('universidad.index')}}" class="btn-sm btn-outline-dark card-tools mr-3" title="Regresar"><i class="fas fa-arrow-left"></i></a>
+                <a href="{{route('campus.index')}}" class="btn-sm btn-outline-dark card-tools mr-3" title="Regresar"><i class="fas fa-arrow-left"></i></a>
             </div>
 
             <div class="col-md-12 mt-2">

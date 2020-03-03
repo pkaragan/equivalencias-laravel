@@ -23,7 +23,7 @@ class CreateCampusTable extends Migration
             $table->string('ciudad');
             $table->string('calle')->nullable();
             $table->integer('numero')->nullable();
-            $table->string('numero-int')->nullable();
+            $table->string('numero_int')->nullable();
             $table->string('colonia')->nullable();
             $table->integer('cp')->nullable();
             $table->string('telefono')->nullable();

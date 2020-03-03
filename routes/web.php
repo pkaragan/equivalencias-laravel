@@ -17,8 +17,6 @@ Route::post('seguridad/login', 'Seguridad\LoginController@login')->name('login-p
 Route::get('seguridad/logout', 'Seguridad\LoginController@logout')->name('logout');
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'superadmin']], function () {
     Route::get('/', 'HomeController@index')->name('admin-index');
-    /*RUTAS DE UNIVERSIDAD*/
-    Route::resource('universidad', 'UniversidadController');
     /*RUTAS DE CAMPUS*/
     Route::resource('campus', 'CampusController');    
     /*RUTAS DE CARRERA*/
