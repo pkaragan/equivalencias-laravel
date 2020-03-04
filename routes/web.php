@@ -18,6 +18,8 @@ Route::get('seguridad/logout', 'Seguridad\LoginController@logout')->name('logout
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'superadmin']], function () {
     Route::get('/', 'HomeController@index')->name('admin-index');
     /*RUTAS DE CAMPUS*/
+    Route::resource('universidad', 'UniversidadController');    
+    /*RUTAS DE CAMPUS*/
     Route::resource('campus', 'CampusController');    
     /*RUTAS DE CARRERA*/
     Route::resource('carrera', 'CarreraController');    
@@ -36,11 +38,3 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     /*RUTAS DE ADMINISTRACION*/
     Route::resource('admin', 'AdminController');
 });
-/*    
-Route::get('libro', 'LibroController@index')->name('libro');
-Route::get('libro/crear', 'LibroController@crear')->name('crear_libro');
-Route::post('libro', 'LibroController@guardar')->name('guardar_libro');
-Route::get('libro/{id}/editar', 'LibroController@editar')->name('editar_libro');
-Route::put('libro/{id}', 'LibroController@actualizar')->name('actualizar_libro');
-Route::delete('libro/{id}', 'LibroController@eliminar')->name('eliminar_libro');
-*/

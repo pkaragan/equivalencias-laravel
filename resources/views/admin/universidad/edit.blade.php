@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section('titulo')
-  Editar Campus {{$campus->nombre}}
+  Editar Universidad - {{$universidad->nombre}}
 @endsection
 
 @section('contenido')
@@ -19,16 +19,16 @@
               </a>
             </div>
         </div>
-        <form action="{{route('campus.update', $campus->id)}}" id="form-general" class="form-horizontal" method="post" autocomplete="off">
+        <form action="{{route('universidad.update', $universidad->id)}}" id="form-general" class="form-horizontal" method="post" autocomplete="off">
           @csrf
           @method('put')
           
           <div class="card card-info shadow m-1">
             <div class="card-header">
-              <h3 class="card-title"><b>Editar Campus</b></h3>
+              <h3 class="card-title"><b>Editar Universidad</b></h3>
             </div>
             <div class="card-body">
-              @include('admin.campus.form')              
+              @include('admin.universidad.form')              
             </div>                   
             
             <div class="card-footer">

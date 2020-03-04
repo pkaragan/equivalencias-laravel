@@ -47,7 +47,7 @@ Universidades
                                 <td class="text-center">
                                   <form action="{{route("campus.destroy", $item['campus_id'])}}" class="d-inline form-eliminar" method="POST">
                                       @csrf @method("delete")
-                                      <button type="submit" class="btn-accion-tabla eliminar-campus tooltipsC" title="Eliminar este registro"><i class="text-danger fa fa-trash"></i></button>
+                                      <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro"><i class="text-danger fa fa-trash"></i></button>
                                   </form>
                               </td>
                             </tr>
@@ -66,7 +66,8 @@ Universidades
 
 @endsection
 
-@section('scripts')
+@section('scripts')  
+
   <!-- DataTables -->
   <script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
   <script src="{{asset("assets/$theme/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
@@ -106,4 +107,6 @@ Universidades
       });
     });
   </script>
+
+  <script src="{{asset("assets/pages/scripts/admin/campus/index.js")}}" type="text/javascript"></script>
 @endsection

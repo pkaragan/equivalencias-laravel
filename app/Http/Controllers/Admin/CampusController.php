@@ -54,6 +54,7 @@ class CampusController extends Controller
                 'ciudad'=>$request['ciudad'],
                 'calle'=>$request['calle'],
                 'numero'=>$request['numero'],
+                'numero_int'=>$request['numero_int'],
                 'colonia'=>$request['colonia'],
                 'cp'=>$request['cp'],
                 'telefono'=>$request['telefono'],
@@ -75,6 +76,7 @@ class CampusController extends Controller
                 'ciudad'=>$request['ciudad'],
                 'calle'=>$request['calle'],
                 'numero'=>$request['numero'],
+                'numero_int'=>$request['numero_int'],
                 'colonia'=>$request['colonia'],
                 'cp'=>$request['cp'],
                 'telefono'=>$request['telefono'],
@@ -126,6 +128,7 @@ class CampusController extends Controller
                 'ciudad'=>$request['ciudad'],
                 'calle'=>$request['calle'],
                 'numero'=>$request['numero'],
+                'numero_int'=>$request['numero_int'],
                 'colonia'=>$request['colonia'],
                 'cp'=>$request['cp'],
                 'telefono'=>$request['telefono'],
@@ -133,7 +136,7 @@ class CampusController extends Controller
             ]);        
         }        
 
-        return redirect('admin/campus')->with('mensaje', 'Campus creado con exito');
+        return redirect('admin/campus')->with('mensaje', 'Campus actualizado con exito');
     }
 
     /**
@@ -143,10 +146,21 @@ class CampusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, $id)
-    {
-        if ($request->ajax()) {
-            if (Campus::destroy($id)) {
-                return response()->json(['mensaje' => 'ok']);
+    {                        
+        if ($request->ajax()) {               
+            $campus=Campus::findOrFail($id);
+            $hayMasCampus=Campus::where('universidad_id','=',$campus->universidad_id)->count();
+            if (Campus::destroy($id)) {     
+                if($hayMasCampus==1)
+                {
+                    if(Universidad::destroy($campus->universidad_id)){
+                        return response()->json(['mensaje' => 'ok']);
+                    }else{
+                        return response()->json(['mensaje' => 'ng']);
+                    }
+                }else{
+                    return response()->json(['mensaje' => 'ok']);
+                }
             } else {
                 return response()->json(['mensaje' => 'ng']);
             }

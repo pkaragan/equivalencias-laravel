@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidarCarrera;
 use App\Models\Admin\Campus;
 use App\Models\Admin\Carrera;
 use App\Models\Admin\Universidad;
@@ -11,23 +12,13 @@ use Illuminate\Http\Request;
 class CarreraController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('admin.carrera.create');
     }
 
     /**
@@ -36,9 +27,10 @@ class CarreraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidarCarrera $request)
     {
-        //
+        Carrera::create($request->all());
+        return redirect()->route('carrera.show',$request['campus_id'])->with('mensaje', 'Carrera creada con exito');
     }
 
     /**
@@ -86,8 +78,17 @@ class CarreraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {               
+              
+            if (Carrera::destroy($id)) {     
+                return response()->json(['mensaje' => 'ok']);         
+            }else{
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 }

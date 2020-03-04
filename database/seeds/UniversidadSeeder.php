@@ -15,7 +15,7 @@ class UniversidadSeeder extends Seeder
         DB::table('universidad')->insert([
             'nombre'=>'Instituto Tecnológico de Ciudad Juárez',
             'iniciales'=>'ITCJ',
-            'tipo'=>'Publica',
+            'tipo'=>'publica',
             'pais'=>'México',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -24,7 +24,7 @@ class UniversidadSeeder extends Seeder
         DB::table('universidad')->insert([
             'nombre'=>'Universidad Pedagógica Nacional',
             'iniciales'=>'UPN',
-            'tipo'=>'Pública',
+            'tipo'=>'publica',
             'pais'=>'México',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -33,7 +33,7 @@ class UniversidadSeeder extends Seeder
         DB::table('universidad')->insert([
             'nombre'=>'Universidad Tecnológica de Ciudad Juárez',
             'iniciales'=>'UTCJ',
-            'tipo'=>'Pública',
+            'tipo'=>'publica',
             'pais'=>'México',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -42,7 +42,7 @@ class UniversidadSeeder extends Seeder
         DB::table('universidad')->insert([
             'nombre'=>'Universidad TecMilenio',
             'iniciales'=>'UTM',
-            'tipo'=>'Privada',
+            'tipo'=>'privada',
             'pais'=>'México',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -51,7 +51,7 @@ class UniversidadSeeder extends Seeder
         DB::table('universidad')->insert([
             'nombre'=>'Tecnológico de Monterrey',
             'iniciales'=>'ITESM',
-            'tipo'=>'Privada',
+            'tipo'=>'privada',
             'pais'=>'México',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')

@@ -10,15 +10,18 @@ Carreras - {{$universidad->nombre}} - {{ $campus->nombre}}
         <div class="card">
             <div class="card-header without-border">              
                 <h3 class="card-title">Carreras - {{ $universidad->nombre }} - {{ $campus->nombre }} </h3>
-                <a href="#" class="btn btn-info btn-sm card-tools mr-3">Agregar Carreras</a>
+                <a href="#" class="btn btn-info btn-sm card-tools mr-3" data-toggle="modal" data-target="#modal-agregar">Agregar Carrera</a>
                 <a href="{{route('campus.index')}}" class="btn-sm btn-outline-dark card-tools mr-3" title="Regresar"><i class="fas fa-arrow-left"></i></a>
             </div>
+
+            @include('admin.carrera.create', ['nombre' => $universidad->nombre], ['campus' => $campus])    
+            @include('admin.carrera.edit', ['nombre' => $universidad->nombre], ['campus' => $campus])            
 
             <div class="col-md-12 mt-2">
     
                 <div class="card">
                   <div class="card-body p-0">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="carrera-table">
                       <thead>
                         <tr>
                           <th style="width: 10px">#</th>
@@ -31,12 +34,17 @@ Carreras - {{$universidad->nombre}} - {{ $campus->nombre}}
                       <tbody>
                         @foreach ($carreras as $key => $item)
                             <tr>                                                            
-                                <td>{{$item["id"]}}.</td>
+                                <td>{{$key+1}}.</td>
                                 <td>{{$item["nombre"]}}</td>                          
                                 <td class="text-center"><a href="{{route('materia.show', $item["id"])}}" title="Ver Materias"><i class="text-muted fas fa-book"></i></a></td>
-                                <td class="text-center"><a href="{{route('carrera.edit', $item["id"])}}" title="Editar carrera"><i class="text-dark fa fa-edit"></i></a></td>
-                                <td class="text-center"><a href="{{route('carrera.destroy', $item["id"])}}" title="Eliminar carrera"><i class="text-danger fa fa-trash"></i></a></td>
-                            </tr>                        
+                                <td class="text-center"><a href="#" title="Editar carrera" data-toggle="modal" data-target="#modal-editar"><i class="text-dark fa fa-edit"></i></a></td>
+                                <td class="text-center">
+                                  <form action="{{route("carrera.destroy", $item['id'])}}" class="d-inline form-eliminar" method="POST">
+                                      @csrf @method("delete")
+                                      <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro"><i class="text-danger fa fa-trash"></i></button>
+                                  </form>
+                                </td>
+                            </tr>                                              
                         @endforeach
                       </tbody>
                     </table>
@@ -49,4 +57,8 @@ Carreras - {{$universidad->nombre}} - {{ $campus->nombre}}
         </div>
     </div>
 </div> 
+@endsection
+
+@section('scripts')
+  <script src="{{asset("assets/pages/scripts/admin/carrera/index.js")}}" type="text/javascript"></script>
 @endsection

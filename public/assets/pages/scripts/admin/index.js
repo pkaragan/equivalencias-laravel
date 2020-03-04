@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#tabla-data").on('submit', '.form-eliminar', function (event) {
+    $("#tabla-data").on('submit', '.form-eliminar', function () {
         event.preventDefault();
         const form = $(this);
         swal({

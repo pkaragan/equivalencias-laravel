@@ -24,8 +24,7 @@ class ValidarCarrera extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|max:50|unique:permiso,nombre,'.$this->route('id'),
-            'slug' => 'required|max:50|unique:permiso,slug,'.$this->route('id'),
+            'nombre' => 'required|string|max:100',
         ];
     }
 }

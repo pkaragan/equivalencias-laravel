@@ -2,10 +2,6 @@
 @section('titulo')
     Crear Nuevo Campus
 @endsection
-    
-@section('scripts')
-  <script src="{{asset("assets/pages/scripts/admin/crear.js")}}" type="text/javascript"></script>    
-@endsection
 
 @section('contenido')
 <div class="row">
@@ -37,7 +33,7 @@
           </div>
 
           <div class="card-footer">            
-              @include('includes.boton-form-crear', ['regresar' => 'admin.index'])                
+              @include('includes.boton-form-crear', ['regresar' => 'campus.index'])                
           </div>   
           
         </div>

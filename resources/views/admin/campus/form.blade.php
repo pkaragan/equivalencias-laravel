@@ -10,11 +10,11 @@
     <div class="col-sm-12">
         <div class="container text-left">
             <label class="col-form-label-sm">
-                <input class="form-check-input" type="radio" name="radio-universidad" value="existente" id="existente" onchange="mostrar_uni_select(this.value);">
+                <input class="form-check-input" type="radio" name="radio-universidad" value="existente" id="existente" onchange="mostrar_uni_select(this.value);"  {{ old('radio-universidad') == "existente" ? 'checked' : '' }}>
                 Universidad existente
             </label>
             <label class="col-form-label-sm ml-5">
-                <input class="form-check-input" type="radio" name="radio-universidad" value="nueva" id="nueva" onchange="mostrar_uni_select(this.value);">
+                <input class="form-check-input" type="radio" name="radio-universidad" value="nueva" id="nueva" onchange="mostrar_uni_select(this.value);" {{ old('radio-universidad') == "nueva" ? 'checked' : '' }}>
                 Registrar universidad
             </label>
         </div>
@@ -24,8 +24,8 @@
 @else
     <input value="edit" name="edit" hidden>
     <div id="lista-uni" class="row container-fluid col-sm-12 border-2 border border-light shadow rounded">
-    <h5 class="card-header">Universidad</h5>
-        <div class="input-group mb-3 col-sm-12 mt-2">
+    <h5 class="card-header col-sm-12">Universidad</h5>
+        <div class="input-group mb-3 col-sm-12 mt-3 ml-3">
             <div class="input-group-prepend">
                 <span class="input-group-text input-group-sm"><i class="fas fa-school" id="school-icon"></i></span>
             </div>
@@ -33,7 +33,7 @@
                 <option>{{$campus->universidad->nombre}}</option>
             </select>
             <div class="card-tools pull-right">
-                <a href="{{route('campus.index')}}" class="btn btn-block btn-default btn-sm">
+                <a href="{{route('universidad.edit',$campus->universidad_id)}}" class="btn btn-block btn-default btn-sm">
                     <i class="fas fa-edit"></i> Editar
                 </a>
             </div>
@@ -44,95 +44,107 @@
 
 <!-- formulario agregar Campus -->
 
-<div class="row container-fluid col-sm-12 border-2 border border-light shadow rounded mt-3">
-    <h5 class="card-header">Campus</h5>
-    <div class="input-group mb-3 col-sm-11 mt-2">
+<div class="row col-sm-12 border-2 border border-light shadow rounded mt-3">
+    <h5 class="card-header col-sm-12">Campus</h5>
+    
+    <div class="input-group mb-3 col-sm-8 mt-3">
         <div class="input-group-prepend">
+            <label for="nombre" class="mr-2"><small>Nombre</small></label>
             <span class="input-group-text"><i class="fas fa-building"></i></span>
         </div>
         <!-- campus -->
-        <input type="text" class="form-control" name="nombre" id="nombre" value="{{old('nombre',$campus->nombre ?? '') }}" placeholder="Nombre del Campus">
+        <input type="text" class="form-control" name="nombre" id="nombre" value="{{old('nombre',$campus->nombre ?? '') }}" placeholder="Nombre del Campus" required>
     </div>
 
 
-    <div class="input-group mb-3 col-sm-3">
-        <!-- iniciales campus -->
-        <input type="text" class="form-control" name="iniciales" value="{{old('iniciales', $campus->iniciales ?? '')}}" id="iniciales" placeholder="Iniciales">
-        <div class="input-group-append">
+    <div class="input-group mb-3 mt-3 col-sm-4">
+        <!-- iniciales campus -->        
+        <div class="input-group-prepend">
+            <label for="iniciales" class="mr-2"><small>Iniciales</small></label>
             <span class="input-group-text"><i class="fas fa-font"></i></span>
         </div>
+        <input type="text" class="form-control" name="iniciales" value="{{old('iniciales', $campus->iniciales ?? '')}}" id="iniciales" placeholder="Iniciales">
     </div>
 
-    <div class="input-group mb-3 col-sm-4">
+    <div class="input-group mb-3 col-sm-6">
         <!-- estado -->
-        <input type="text" class="form-control" name="estado" value="{{old('estado', $campus->estado ?? '')}}" id="estado" placeholder="Estado">
-        <div class="input-group-append">
+        <div class="input-group-prepend">
+            <label for="estado" class="mr-3"><small>Estado</small></label>
             <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
         </div>
+        <input type="text" class="form-control" name="estado" value="{{old('estado', $campus->estado ?? '')}}" id="estado" placeholder="Estado">        
     </div>
 
-    <div class="input-group mb-3 col-sm-4">
+    <div class="input-group mb-3 col-sm-6">
         <!-- ciudad -->
-        <input type="text" class="form-control" name="ciudad" value="{{old('ciudad', $campus->ciudad ?? '')}}" id="ciudad" placeholder="Ciudad">
-        <div class="input-group-append">
+        <div class="input-group-prepend">
+            <label for="ciudad" class="mr-2"><small>Ciudad</small></label>
             <span class="input-group-text"><i class="fas fa-city"></i></span>
         </div>
+        <input type="text" class="form-control" name="ciudad" value="{{old('ciudad', $campus->ciudad ?? '')}}" id="ciudad" placeholder="Ciudad">        
     </div>
 
-    <div class="input-group mb-3 col-sm-5">
+    <div class="input-group mb-3 col-sm-6">
         <!-- calle -->
-        <input type="text" class="form-control" name="calle" value="{{old('calle', $campus->calle ?? '')}}" id="calle" placeholder="Calle">
-        <div class="input-group-append">
+        <div class="input-group-prepend">
+            <label for="calle" class="mr-4"><small>Calle</small></label>
             <span class="input-group-text"><i class="fas fa-road"></i></span>
         </div>
+        <input type="text" class="form-control" name="calle" value="{{old('calle', $campus->calle ?? '')}}" id="calle" placeholder="Calle">        
     </div>
 
     <div class="input-group mb-3 col-sm-3">
         <!-- numero exterior -->
-        <input type="number" class="form-control" name="numero" value="{{old('numero', $campus->numero ?? '')}}" id="numero" placeholder="Num int">
-        <div class="input-group-append">
+        <div class="input-group-prepend">
+            <label for="numero" class="mr-2"><small>Num ext</small></label>
             <span class="input-group-text"><i class="fas fa-list-ol"></i></span>
         </div>
+        <input type="number" class="form-control" name="numero" value="{{old('numero', $campus->numero ?? '')}}" id="numero" placeholder="Num ext">        
     </div>
 
     <div class="input-group mb-3 col-sm-3">
         <!-- numero interior -->
-        <input type="number" class="form-control" name="numero-int" id="numero-int" value="{{old('numero-int', $campus->numero_int ?? '')}}" placeholder="Num ext">
-        <div class="input-group-append">
+        <div class="input-group-prepend">
+            <label for="num_int" class="mr-2"><small>Num int</small></label>
             <span class="input-group-text"><i class="fas fa-sort-numeric-up"></i></span>
         </div>
+        <input type="text" class="form-control" name="numero_int" id="numero_int" value="{{old('numero_int', $campus->numero_int ?? '')}}" placeholder="Num int">        
     </div>
 
-    <div class="input-group mb-3 col-sm-8">
+    <div class="input-group mb-3 col-sm-9">
         <!-- colonia -->
-        <input type="text" class="form-control" name="colonia" id="colonia" value="{{old('colonia', $campus->colonia ?? '')}}" placeholder="Colonia">
-        <div class="input-group-append">
+        <div class="input-group-prepend">
+            <label for="colonia" class="mr-2 ml-1"><small>Colonia</small></label>
             <span class="input-group-text"><i class="fas fa-vihara"></i></span>
         </div>
+        <input type="text" class="form-control" name="colonia" id="colonia" value="{{old('colonia', $campus->colonia ?? '')}}" placeholder="Colonia">        
     </div>
 
     <div class="input-group mb-3 col-sm-3">
         <!-- cp -->
-        <input type="number" class="form-control" name="cp" id="cp" value="{{old('cp', $campus->cp ?? '')}}" placeholder="Código Postal">
-        <div class="input-group-append">
+        <div class="input-group-prepend">
+            <label for="cp" class="mr-2"><small>C.P.</small></label>
             <span class="input-group-text"><i class="fas fa-sort-amount-down"></i></i></span>
         </div>
+        <input type="number" class="form-control" name="cp" id="cp" value="{{old('cp', $campus->cp ?? '')}}" placeholder="Código Postal">        
     </div>
 
-    <div class="input-group mb-3 col-sm-6">
+    <div class="input-group mb-3 col-sm-4">
         <!-- telefono -->
-        <input type="tel" class="form-control" name="telefono" id="telefono" value="{{old('telefono', $campus->telefono ?? '')}}" placeholder="Teléfono">
-        <div class="input-group-append">
+        <div class="input-group-prepend">
+            <label for="telefono" class="mr-2"><small>Teléfono</small></label>
             <span class="input-group-text"><i class="fas fa-phone-volume"></i></span>
         </div>
+        <input type="tel" class="form-control" name="telefono" id="telefono" value="{{old('telefono', $campus->telefono ?? '')}}" placeholder="Teléfono">        
     </div>
 
     <div class="input-group mb-3 col-sm-3">
         <!-- extension -->
-        <input type="number" class="form-control" name="ext" id="ext" value="{{old('ext', $campus->ext ?? '')}}" placeholder="Extensión">
-        <div class="input-group-append">
+        <div class="input-group-prepend">
+            <label for="ext" class="mr-2"><small>Extensión</small></label>
             <span class="input-group-text"><i class="fas fa-phone-square"></i></span>
         </div>
+        <input type="number" class="form-control" name="ext" id="ext" value="{{old('ext', $campus->ext ?? '')}}" placeholder="Extensión">        
     </div>
 </div>    
 
@@ -146,9 +158,15 @@
 
     window.onload = function(){
 
-        document.getElementById("existente").checked = "true";
-        document.getElementById("lista-uni").style.display = "block";
-        document.getElementById("agregar-uni").style.display = "none";
+        if(!document.getElementById("nueva").checked){
+            document.getElementById("existente").checked = "true";
+            document.getElementById("lista-uni").style.display = "block";
+            document.getElementById("agregar-uni").style.display = "none";
+        }else{
+            document.getElementById("nueva").checked = "true";
+            document.getElementById("lista-uni").style.display = "none";
+            document.getElementById("agregar-uni").style.display = "block";
+        }
 
         //Initialize Select2 Elements
         $('.select2').select2();

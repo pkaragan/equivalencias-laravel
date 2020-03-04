@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Carrera extends Model
 {
     public $table = "carrera";
+    protected $fillable = ['nombre', 'campus_id'];
+    protected $guarded = ['id'];
     public function alumnos()
     {
         return $this->hasMany(Alumno::class);
@@ -22,8 +24,4 @@ class Carrera extends Model
         return $this->belongsTo(Campus::class);
     }    
 
-  /*  public function universidad()
-    {
-        return $this->hasOneThrough(Universidad::class, Campus::class);
-    }*/
 }
