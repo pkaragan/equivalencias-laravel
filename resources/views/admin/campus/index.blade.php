@@ -14,14 +14,14 @@ Universidades
         @include('includes.mensaje')
         <div class="card">
             <div class="card-header without-border">
-                <h3 class="card-title">Universidades</h3>                
+                <h3 class="card-title">Universidades</h3>
                 <a href="{{route('campus.create')}}" class="btn btn-info btn-sm card-tools mr-3">Agregar Campus</a>
                 <a href="{{route('admin-index')}}" class="btn-sm btn-outline-dark card-tools mr-3" title="Regresar"><i class="fas fa-arrow-left"></i></a>
             </div>
 
             <div class="col-md-12 mt-2">
-    
-                <div class="card">                  
+
+                <div class="card">
                   <div class="card-body p-3">
                     <table class="table table-striped" id="uni-table">
                       <thead>
@@ -35,22 +35,22 @@ Universidades
                           <th class="text-center">Eliminar</th>
                         </tr>
                       </thead>
-                      <tbody>                        
+                      <tbody>
                         @foreach ($universidades as $key => $item)
-                            <tr>                                                            
+                            <tr>
                                 <td>{{$key+1}}.</td>
                                 <td>{{$item["nombre"]}}</td>
                                 <td>{{$item["iniciales"]}}</td>
-                                <td>{{$item["campus"]}}</td>   
+                                <td>{{$item["campus"]}}</td>
                                 <td class="text-center"><a href="{{route('carrera.show',$item['campus_id'])}}" title="Ver carreras"><i class="text-muted fa fa-graduation-cap"></i></a></td>
                                 <td class="text-center"><a href="{{route('campus.edit',$item['campus_id'])}}" title="Editar campus"><i class="text-dark fa fa-edit"></i></a></td>
                                 <td class="text-center">
                                   <form action="{{route("campus.destroy", $item['campus_id'])}}" class="d-inline form-eliminar" method="POST">
                                       @csrf @method("delete")
-                                      <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro"><i class="text-danger fa fa-trash"></i></button>
+                                      <button type="submit" class="btn-accion-tabla eliminar-campus tooltipsC" title="Eliminar este registro"><i class="text-danger fa fa-trash"></i></button>
                                   </form>
                               </td>
-                            </tr>            
+                            </tr>
                         @endforeach
                       </tbody>
                     </table>
@@ -59,19 +59,19 @@ Universidades
                 </div>
                 <!-- /.card -->
               </div>
-              <!-- /.col -->            
+              <!-- /.col -->
         </div>
     </div>
-</div> 
+</div>
 
 @endsection
 
 @section('scripts')
   <!-- DataTables -->
   <script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
-  <script src="{{asset("assets/$theme/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>   
-  
-  
+  <script src="{{asset("assets/$theme/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
+
+
   <!-- page script -->
   <script>
     $(function () {
@@ -102,7 +102,7 @@ Universidades
           "infoEmpty": "",
           "infoFiltered": ""
           }
-          
+
       });
     });
   </script>
