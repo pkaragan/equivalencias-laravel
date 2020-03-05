@@ -42,8 +42,8 @@ Universidades
                                 <td>{{$item["nombre"]}}</td>
                                 <td>{{$item["iniciales"]}}</td>
                                 <td>{{$item["campus"]}}</td>
-                                <td class="text-center"><a href="{{route('carrera.show',$item['campus_id'])}}" title="Ver carreras"><i class="text-muted fa fa-graduation-cap"></i></a></td>
-                                <td class="text-center"><a href="{{route('campus.edit',$item['campus_id'])}}" title="Editar campus"><i class="text-dark fa fa-edit"></i></a></td>
+                                <td class="text-center"><a href="{{route('carrera.show',$item['campus_id'])}}" class="tooltipsC" title="Ver carreras"><i class="text-muted fa fa-graduation-cap"></i></a></td>
+                                <td class="text-center"><a href="{{route('campus.edit',$item['campus_id'])}}" class="tooltipsC" title="Editar campus"><i class="text-dark fa fa-edit"></i></a></td>
                                 <td class="text-center">
                                   <form action="{{route("campus.destroy", $item['campus_id'])}}" class="d-inline form-eliminar" method="POST">
                                       @csrf @method("delete")

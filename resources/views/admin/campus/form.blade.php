@@ -49,7 +49,7 @@
     
     <div class="input-group mb-3 col-sm-8 mt-3">
         <div class="input-group-prepend">
-            <label for="nombre" class="mr-2"><small>Nombre</small></label>
+            <label for="nombre" class="mr-2 requerido"><small>Nombre</small></label>
             <span class="input-group-text"><i class="fas fa-building"></i></span>
         </div>
         <!-- campus -->
@@ -60,7 +60,7 @@
     <div class="input-group mb-3 mt-3 col-sm-4">
         <!-- iniciales campus -->        
         <div class="input-group-prepend">
-            <label for="iniciales" class="mr-2"><small>Iniciales</small></label>
+            <label for="iniciales" class="mr-2 requerido"><small>Iniciales</small></label>
             <span class="input-group-text"><i class="fas fa-font"></i></span>
         </div>
         <input type="text" class="form-control" name="iniciales" value="{{old('iniciales', $campus->iniciales ?? '')}}" id="iniciales" placeholder="Iniciales">
@@ -69,7 +69,7 @@
     <div class="input-group mb-3 col-sm-6">
         <!-- estado -->
         <div class="input-group-prepend">
-            <label for="estado" class="mr-3"><small>Estado</small></label>
+            <label for="estado" class="mr-3 requerido"><small>Estado</small></label>
             <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
         </div>
         <input type="text" class="form-control" name="estado" value="{{old('estado', $campus->estado ?? '')}}" id="estado" placeholder="Estado">        
@@ -78,7 +78,7 @@
     <div class="input-group mb-3 col-sm-6">
         <!-- ciudad -->
         <div class="input-group-prepend">
-            <label for="ciudad" class="mr-2"><small>Ciudad</small></label>
+            <label for="ciudad" class="mr-2 requerido"><small>Ciudad</small></label>
             <span class="input-group-text"><i class="fas fa-city"></i></span>
         </div>
         <input type="text" class="form-control" name="ciudad" value="{{old('ciudad', $campus->ciudad ?? '')}}" id="ciudad" placeholder="Ciudad">        
@@ -87,8 +87,8 @@
     <div class="input-group mb-3 col-sm-6">
         <!-- calle -->
         <div class="input-group-prepend">
-            <label for="calle" class="mr-4"><small>Calle</small></label>
-            <span class="input-group-text"><i class="fas fa-road"></i></span>
+            <label for="calle" class="ml-3 mr-3"><small>Calle</small></label>
+            <span class="input-group-text ml-1"><i class="fas fa-road"></i></span>
         </div>
         <input type="text" class="form-control" name="calle" value="{{old('calle', $campus->calle ?? '')}}" id="calle" placeholder="Calle">        
     </div>
@@ -114,8 +114,8 @@
     <div class="input-group mb-3 col-sm-9">
         <!-- colonia -->
         <div class="input-group-prepend">
-            <label for="colonia" class="mr-2 ml-1"><small>Colonia</small></label>
-            <span class="input-group-text"><i class="fas fa-vihara"></i></span>
+            <label for="colonia" class="mr-2 ml-2"><small>Colonia</small></label>
+            <span class="input-group-text ml-2"><i class="fas fa-vihara"></i></span>
         </div>
         <input type="text" class="form-control" name="colonia" id="colonia" value="{{old('colonia', $campus->colonia ?? '')}}" placeholder="Colonia">        
     </div>
@@ -132,8 +132,8 @@
     <div class="input-group mb-3 col-sm-4">
         <!-- telefono -->
         <div class="input-group-prepend">
-            <label for="telefono" class="mr-2"><small>Teléfono</small></label>
-            <span class="input-group-text"><i class="fas fa-phone-volume"></i></span>
+            <label for="telefono" class="mr-3"><small>Teléfono</small></label>
+            <span class="input-group-text ml-1"><i class="fas fa-phone-volume"></i></span>
         </div>
         <input type="tel" class="form-control" name="telefono" id="telefono" value="{{old('telefono', $campus->telefono ?? '')}}" placeholder="Teléfono">        
     </div>

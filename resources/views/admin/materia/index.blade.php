@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section("titulo")
-Materias - {{ $carrera->campusUacj['nombre'] }}
+{{ $carrera->nombre }} - {{$carrera->campus->universidad->nombre}} - {{$carrera->campus->nombre}}
 @endsection
 
 @section('contenido')
@@ -8,35 +8,44 @@ Materias - {{ $carrera->campusUacj['nombre'] }}
     <div class="col-lg-12">
         @include('includes.mensaje')
         <div class="card">
-            <div class="card-header without-border">
-                <h3 class="card-title">Carreras - {{ $carrera->campusUacj['nombre'] }}</h3>
-                <a href="#" class="btn btn-info btn-sm card-tools mr-3">Agregar Carreras</a>
-                <a href="{{route('uacj.index')}}" class="btn-sm btn-outline-dark card-tools mr-3" title="Regresar"><i class="fas fa-arrow-left"></i></a>
+            <div class="card-header without-border">              
+                <h3 class="card-title"><b>{{ $carrera->nombre }}</b> - <u>{{$carrera->campus->universidad->nombre}}</u> - {{$carrera->campus->nombre}} </h3>
+                <a href="#" class="btn btn-info btn-sm card-tools mr-3" data-toggle="modal" data-target="#modal-agregar">Agregar Materia</a>
+                <a href="{{route('carrera.show',$carrera->campus->id)}}" class="btn-sm btn-outline-dark card-tools mr-3 tooltipsC" title="Regresar"><i class="fas fa-arrow-left"></i></a>
             </div>
 
-            <div class="col-md-12">
+            @include('admin.materia.create', ['carrera' => $carrera])    
+            @include('admin.materia.edit', ['carrera' => $carrera])            
+
+            <div class="col-md-12 mt-2">
     
                 <div class="card">
                   <div class="card-body p-0">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="materia-table">
                       <thead>
                         <tr>
                           <th style="width: 10px">#</th>
-                          <th>Nombre</th>
-                          <th class="text-center" style="width: 100px">Ver materias</th>
-                          <th class="text-center" style="width: 100px">Editar</th>
-                          <th class="text-center" style="width: 100px">Eliminar</th>
+                          <th>Materia</th>
+                          <th class="text-center" style="width: 130px">Mostrar equivalencias</th>
+                          <th class="text-center" style="width: 130px">Editar</th>
+                          <th class="text-center" style="width: 130px">Eliminar</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($carreras as $key => $item)
+                        @foreach ($carrera->materias as $key => $item)
                             <tr>                                                            
-                                <td>{{$item["id"]}}.</td>
-                                <td>{{$item["nombre"]}}</td>                          
-                                <td class="text-center"><a href="{{route('materia.show', $item["id"])}}" title="Ver Materias"><i class="text-muted fa fa-graduation-cap"></i></a></td>
-                                <td class="text-center"><a href="{{route('carrera.edit', $item["id"])}}" title="Editar carrera"><i class="text-dark fa fa-edit"></i></a></td>
-                                <td class="text-center"><a href="{{route('carrera.destroy', $item["id"])}}" title="Eliminar carrera"><i class="text-danger fa fa-trash"></i></a></td>
-                            </tr>                        
+                                <td>{{$key+1}}.</td>
+                                <td>{{$item["nombre"]}}</td>                    
+                                <td class="text-center"><a href="#" class="tooltipsC" title="Mostrar equivalencias" data-id="{{$item["id"]}}" data-nombre="{{$item["nombre"]}}" data-campus_id="{{$item["campus_id"]}}" data-toggle="modal" data-target="#modal-editar"><i class="text-muted fas fa-equals"></i></a></td>
+                                <td class="text-center"><a href="#" class="tooltipsC" title="Editar materia" data-id="{{$item["id"]}}" data-nombre="{{$item["nombre"]}}" data-carrera_id="{{$item["carrera_id"]}}" data-toggle="modal" data-target="#modal-editar"><i class="text-dark fa fa-edit"></i></a></td>
+                                <td class="text-center">
+
+                                  <form action="{{route("materia.destroy", $item['id'])}}" class="d-inline form-eliminar" method="POST">
+                                      @csrf @method("delete")
+                                      <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro"><i class="text-danger fa fa-trash"></i></button>
+                                  </form>
+                                </td>
+                            </tr>                                              
                         @endforeach
                       </tbody>
                     </table>
@@ -49,4 +58,8 @@ Materias - {{ $carrera->campusUacj['nombre'] }}
         </div>
     </div>
 </div> 
+@endsection
+
+@section('scripts')
+  <script src="{{asset("assets/pages/scripts/admin/materia/index.js")}}" type="text/javascript"></script>  
 @endsection

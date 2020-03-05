@@ -49,16 +49,6 @@ class CarreraController extends Controller
         return view('admin.carrera.index', compact('carreras', 'campus', 'universidad'));      
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -67,9 +57,11 @@ class CarreraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidarCarrera $request)
     {
-        //
+        $carrera=Carrera::findOrFail($request->id);
+        $carrera->update($request->all());        
+        return redirect()->route('carrera.show',$request['campus_id'])->with('mensaje', 'Carrera actualizada con exito');
     }
 
     /**

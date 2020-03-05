@@ -36,7 +36,7 @@ class ValidarCampus extends FormRequest
                 'numero_int' => 'nullable|string|max:10',
                 'colonia' => 'nullable|string|max:100',
                 'cp' => 'nullable|numeric|digits:5',
-                'telefono' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+                'telefono' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:15',
                 'ext' => 'nullable|string|max:10',
             ];
         }else{

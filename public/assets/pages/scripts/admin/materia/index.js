@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#carrera-table').on('submit', '.form-eliminar', function(event){
+    $('#materia-table').on('submit', '.form-eliminar', function(event){
         event.preventDefault();
         const form = $(this);
         swal({
@@ -12,7 +12,7 @@ $(document).ready(function () {
             },
         }).then((value) => {
             if (value) {
-                ajaxRequest(form.serialize(), form.attr('action'), 'eliminarCarrera', form);
+                ajaxRequest(form.serialize(), form.attr('action'), 'eliminarMateria', form);
             }
         });
     });
@@ -23,7 +23,7 @@ $(document).ready(function () {
             type: 'POST',
             data: data,
             success: function (respuesta) {
-                if (funcion == 'eliminarCarrera') {
+                if (funcion == 'eliminarMateria') {
                     if (respuesta.mensaje == "ok") {
                         form.parents('tr').remove();
                         Equivalencias.notificaciones('El registro fue eliminado correctamente', 'Equivalencias', 'success');
@@ -42,11 +42,11 @@ $(document).ready(function () {
         var button = $(event.relatedTarget) 
         var id = button.data('id') 
         var nombre = button.data('nombre') 
-        var campus_id = button.data('campus_id') 
+        var carrera_id = button.data('carrera_id') 
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #nombre').val(nombre);        
-        modal.find('.modal-body #campus_id').val(campus_id);
+        modal.find('.modal-body #carrera_id').val(carrera_id);
     });
 
 });

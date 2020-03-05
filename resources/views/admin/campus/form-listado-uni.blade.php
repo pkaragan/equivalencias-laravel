@@ -2,7 +2,7 @@
 <div id="lista-uni" class="row container-fluid col-sm-12 border-2 border border-light shadow rounded">
     <h5 class="card-header">Universidad</h5>
     
-    <label><small>Selecciona el Instituto</small></label>
+    <label class="requerido"><small>Selecciona el Instituto</small></label>
     <div class="input-group mb-3 col-sm-12 mt-2">
         <div class="input-group-prepend">
             <span class="input-group-text input-group-sm"><i class="fas fa-school" id="school-icon"></i></span>

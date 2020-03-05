@@ -23,7 +23,7 @@ UACJ
             <div class="card-header without-border">
                 <h3 class="card-title">UACJ</h3>
                 <a href="{{ route('uacj.create') }}" class="btn btn-info btn-sm card-tools mr-3">Agregar Campus</a>
-                <a href="{{route('admin-index')}}" class="btn-sm btn-outline-dark card-tools mr-3" title="Regresar"><i class="fas fa-arrow-left"></i></a>
+                <a href="{{route('admin-index')}}" class="btn-sm btn-outline-dark card-tools mr-3 tooltipsC" title="Regresar"><i class="fas fa-arrow-left"></i></a>
             </div>
 
             <section class="content mt-3">

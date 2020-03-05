@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section("titulo")
-Carreras - {{$universidad->nombre}} - {{ $campus->nombre}}
+{{$universidad->nombre}} - {{ $campus->nombre}}
 @endsection
 
 @section('contenido')
@@ -9,9 +9,9 @@ Carreras - {{$universidad->nombre}} - {{ $campus->nombre}}
         @include('includes.mensaje')
         <div class="card">
             <div class="card-header without-border">              
-                <h3 class="card-title">Carreras - {{ $universidad->nombre }} - {{ $campus->nombre }} </h3>
+                <h3 class="card-title"><b>{{ $universidad->nombre }}</b> - {{ $campus->nombre }} </h3>
                 <a href="#" class="btn btn-info btn-sm card-tools mr-3" data-toggle="modal" data-target="#modal-agregar">Agregar Carrera</a>
-                <a href="{{route('campus.index')}}" class="btn-sm btn-outline-dark card-tools mr-3" title="Regresar"><i class="fas fa-arrow-left"></i></a>
+                <a href="{{route('campus.index')}}" class="btn-sm btn-outline-dark card-tools mr-3 tooltipsC" title="Regresar"><i class="fas fa-arrow-left"></i></a>
             </div>
 
             @include('admin.carrera.create', ['nombre' => $universidad->nombre], ['campus' => $campus])    
@@ -36,9 +36,10 @@ Carreras - {{$universidad->nombre}} - {{ $campus->nombre}}
                             <tr>                                                            
                                 <td>{{$key+1}}.</td>
                                 <td>{{$item["nombre"]}}</td>                          
-                                <td class="text-center"><a href="{{route('materia.show', $item["id"])}}" title="Ver Materias"><i class="text-muted fas fa-book"></i></a></td>
-                                <td class="text-center"><a href="#" title="Editar carrera" data-toggle="modal" data-target="#modal-editar"><i class="text-dark fa fa-edit"></i></a></td>
+                                <td class="text-center"><a href="{{route('materia.show', $item["id"])}}" class="tooltipsC" title="Ver Materias"><i class="text-muted fas fa-book"></i></a></td>
+                                <td class="text-center"><a href="#" class="tooltipsC" title="Editar carrera" data-id="{{$item["id"]}}" data-nombre="{{$item["nombre"]}}" data-campus_id="{{$item["campus_id"]}}" data-toggle="modal" data-target="#modal-editar"><i class="text-dark fa fa-edit"></i></a></td>
                                 <td class="text-center">
+
                                   <form action="{{route("carrera.destroy", $item['id'])}}" class="d-inline form-eliminar" method="POST">
                                       @csrf @method("delete")
                                       <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro"><i class="text-danger fa fa-trash"></i></button>
@@ -60,5 +61,5 @@ Carreras - {{$universidad->nombre}} - {{ $campus->nombre}}
 @endsection
 
 @section('scripts')
-  <script src="{{asset("assets/pages/scripts/admin/carrera/index.js")}}" type="text/javascript"></script>
+  <script src="{{asset("assets/pages/scripts/admin/carrera/index.js")}}" type="text/javascript"></script>  
 @endsection

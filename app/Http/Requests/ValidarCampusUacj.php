@@ -25,13 +25,17 @@ class ValidarCampusUacj extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|max:100|unique:campus_uacj,nombre,'.$this->route('id'),
-            'iniciales' => 'required|max:10,',
-            'estado' => 'required|max:80,',
-            'ciudad' => 'required|max:80,',
-            'calle' => 'nullable|max:80',
-            'numero' => 'nullable|max:10',
+            'nombre' => 'required|string|max:100|unique:campus_uacj,nombre,'.$this->route('id'),
+            'iniciales' => 'required|string|max:10,',
+            'estado' => 'required|string|max:100,',
+            'ciudad' => 'required|string|max:100,',
+            'calle' => 'nullable|string|max:100',
+            'numero' => 'nullable|numeric|digits_between:1,6',
+            'numero_int' => 'nullable|string|max:10',
+            'colonia' => 'nullable|string|max:100',
             'cp' => 'nullable|numeric|digits:5',
+            'telefono' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:15',
+            'ext' => 'nullable|string|max:10',
         ];
     }
 }

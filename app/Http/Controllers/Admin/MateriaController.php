@@ -3,20 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidarCarrera;
+use App\Models\Admin\Carrera;
+use App\Models\Admin\Materia;
 use Illuminate\Http\Request;
 
 class MateriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +17,7 @@ class MateriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.materia.create');
     }
 
     /**
@@ -35,7 +28,8 @@ class MateriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Materia::create($request->all());
+        return redirect()->route('materia.show',$request['carrera_id'])->with('mensaje', 'Materia creada con exito');
     }
 
     /**
@@ -46,20 +40,10 @@ class MateriaController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $carrera = Carrera::with('materias')->findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return view('admin.materia.index', compact('carrera'));      
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -67,9 +51,11 @@ class MateriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidarCarrera $request)
     {
-        //
+        $materia=Materia::findOrFail($request->id);
+        $materia->update($request->all());        
+        return redirect()->route('materia.show',$request['carrera_id'])->with('mensaje', 'Materia actualizada con exito');
     }
 
     /**
@@ -78,8 +64,17 @@ class MateriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {               
+              
+            if (Materia::destroy($id)) {     
+                return response()->json(['mensaje' => 'ok']);         
+            }else{
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 }
