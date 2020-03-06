@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::resource('materia', 'MateriaController');    
     /*RUTAS DE UACJ*/                      
     Route::resource('uacj', 'CampusUacjController');    
+    Route::get('uacj/index', 'CampusUacjController@index')->name('uacj-index');
     /*RUTAS DE CARRERAS UACJ*/                      
     Route::resource('carreraUacj', 'CarreraUacjController');
     /*RUTAS DE MATERIAS UACJ*/                      

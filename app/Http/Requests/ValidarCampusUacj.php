@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class ValidarCampusUacj extends FormRequest
 {
@@ -25,7 +24,7 @@ class ValidarCampusUacj extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|string|max:100|unique:campus_uacj,nombre,'.$this->route('id'),
+            'nombre' => 'required|string|max:100|unique:campus_uacj,nombre,'.$this->route('uacj'),
             'iniciales' => 'required|string|max:10,',
             'estado' => 'required|string|max:100,',
             'ciudad' => 'required|string|max:100,',

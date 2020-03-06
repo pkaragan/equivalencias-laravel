@@ -40,7 +40,7 @@ class CampusUacjController extends Controller
     public function store(ValidarCampusUacj $request)
     {
         CampusUacj::create($request->all());
-        return redirect('admin/uacj/create')->with('mensaje', 'Campus creado con exito');
+        return redirect()->route('uacj.index')->with('mensaje', 'Campus creado con exito');
     }
 
     /**
@@ -60,9 +60,10 @@ class CampusUacjController extends Controller
      * @param  \App\CampusUacj  $campusUacj
      * @return \Illuminate\Http\Response
      */
-    public function edit(CampusUacj $campusUacj)
+    public function edit($id)
     {
-        //
+        $campus = CampusUacj::findOrFail($id);
+        return view('admin.uacj.edit', compact('campus'));
     }
 
     /**
@@ -72,9 +73,11 @@ class CampusUacjController extends Controller
      * @param  \App\CampusUacj  $campusUacj
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CampusUacj $campusUacj)
-    {
-        //
+    public function update(ValidarCampusUacj $request, $id)
+    {      
+        CampusUacj::findOrFail($id)->update($request->all());
+
+        return redirect()->route('uacj.index')->with('mensaje', 'Campus actualizado con exito');
     }
 
     /**
@@ -83,8 +86,16 @@ class CampusUacjController extends Controller
      * @param  \App\CampusUacj  $campusUacj
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CampusUacj $campusUacj)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {               
+            if (CampusUacj::destroy($id)) {     
+                return response()->json(['mensaje' => 'ok']);                
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 }

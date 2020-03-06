@@ -1,46 +1,101 @@
-<div class="form col-lg-12">    
-    @csrf
-    <div class="form-group">
-        <div class="form-group row">
-            <label for="nombre" class="col-lg-1 col-form-label requerido text-right">Nombre</label>         
-            <div class="col-lg-8">
-                <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre', $data->nombre ?? '')}}" required/>
-            </div>
-        
-            <label for="iniciales" class="col-lg-1 control-label requerido text-right">Iniciales</label>
-            <div class="col-lg-2">
-                <input type="text" name="iniciales" id="iniciales" class="form-control" value="{{old('iniciales', $data->iniciales ?? '')}}" required/>
-            </div>  
+<div class="row col-sm-12 border-2 border border-light shadow rounded mt-3">           
+    <div class="input-group mb-3 col-sm-8 mt-3">
+        <div class="input-group-prepend">
+            <label for="nombre" class="mr-2 requerido"><small>Nombre</small></label>
+            <span class="input-group-text"><i class="fas fa-building"></i></span>
         </div>
-        <div class="form-group row">
-            <label for="estado" class="col-lg-1 control-label requerido text-right">Estado</label>
-            <div class="col-lg-5">
-                <input type="text" name="estado" id="estado" class="form-control" value="{{old('estado', $data->estado ?? '')}}" required/>
-            </div>  
-            <label for="ciudad" class="col-lg-1 control-label requerido text-right">Ciudad</label>
-            <div class="col-lg-5">
-                <input type="text" name="ciudad" id="ciudad" class="form-control" value="{{old('ciudad', $data->ciudad ?? '')}}" required/>
-            </div>  
-        </div>        
-        <div class="form-group row">
-            <label for="calle" class="col-lg-1 control-label text-right">Calle</label>
-            <div class="col-lg-7">
-                <input type="text" name="calle" id="calle" class="form-control" value="{{old('calle', $data->calle ?? '')}}">
-            </div>  
-            <label for="numero" class="col-lg-1 control-label text-right">Numero</label>
-            <div class="col-lg-3">
-                <input type="text" name="numero" id="numero" class="form-control" value="{{old('numero', $data->numero ?? '')}}">
-            </div>
+        <!-- campus -->
+        <input type="text" class="form-control" name="nombre" id="nombre" value="{{old('nombre',$campus->nombre ?? '') }}" placeholder="Nombre del Campus">
+    </div>
+
+
+    <div class="input-group mb-3 mt-3 col-sm-4">
+        <!-- iniciales campus -->        
+        <div class="input-group-prepend">
+            <label for="iniciales" class="mr-2 requerido"><small>Iniciales</small></label>
+            <span class="input-group-text"><i class="fas fa-font"></i></span>
         </div>
-        <div class="form-group row">
-            <label for="cp" class="col-lg-1 control-label text-right">Código Postal</label>
-            <div class="col-lg-4">
-                <input type="number" name="cp" id="cp" class="form-control" value="{{old('cp', $data->cp ?? '')}}">
-            </div>  
-            <label for="telefono" class="col-lg-1 control-label text-right">Telefono</label>
-            <div class="col-lg-5">
-                <input type="tel" name="telefono" id="telefono" class="form-control" value="{{old('telefono', $data->telefono ?? '')}}">
-            </div>  
-        </div>      
-    </div>            
-</div>
+        <input type="text" class="form-control" name="iniciales" value="{{old('iniciales', $campus->iniciales ?? '')}}" id="iniciales" placeholder="Iniciales">
+    </div>
+
+    <div class="input-group mb-3 col-sm-6">
+        <!-- estado -->
+        <div class="input-group-prepend">
+            <label for="estado" class="mr-3 requerido"><small>Estado</small></label>
+            <span class="input-group-text"><i class="fas fa-map-marked-alt"></i></span>
+        </div>
+        <input type="text" class="form-control" name="estado" value="{{old('estado', $campus->estado ?? '')}}" id="estado" placeholder="Estado">        
+    </div>
+
+    <div class="input-group mb-3 col-sm-6">
+        <!-- ciudad -->
+        <div class="input-group-prepend">
+            <label for="ciudad" class="mr-2 requerido"><small>Ciudad</small></label>
+            <span class="input-group-text"><i class="fas fa-city"></i></span>
+        </div>
+        <input type="text" class="form-control" name="ciudad" value="{{old('ciudad', $campus->ciudad ?? '')}}" id="ciudad" placeholder="Ciudad">        
+    </div>
+
+    <div class="input-group mb-3 col-sm-6">
+        <!-- calle -->
+        <div class="input-group-prepend">
+            <label for="calle" class="ml-3 mr-3"><small>Calle</small></label>
+            <span class="input-group-text ml-1"><i class="fas fa-road"></i></span>
+        </div>
+        <input type="text" class="form-control" name="calle" value="{{old('calle', $campus->calle ?? '')}}" id="calle" placeholder="Calle">        
+    </div>
+
+    <div class="input-group mb-3 col-sm-3">
+        <!-- numero exterior -->
+        <div class="input-group-prepend">
+            <label for="numero" class="mr-2"><small>Num ext</small></label>
+            <span class="input-group-text"><i class="fas fa-list-ol"></i></span>
+        </div>
+        <input type="number" class="form-control" name="numero" value="{{old('numero', $campus->numero ?? '')}}" id="numero" placeholder="Num ext">        
+    </div>
+
+    <div class="input-group mb-3 col-sm-3">
+        <!-- numero interior -->
+        <div class="input-group-prepend">
+            <label for="num_int" class="mr-2"><small>Num int</small></label>
+            <span class="input-group-text"><i class="fas fa-sort-numeric-up"></i></span>
+        </div>
+        <input type="text" class="form-control" name="numero_int" id="numero_int" value="{{old('numero_int', $campus->numero_int ?? '')}}" placeholder="Num int">        
+    </div>
+
+    <div class="input-group mb-3 col-sm-9">
+        <!-- colonia -->
+        <div class="input-group-prepend">
+            <label for="colonia" class="mr-2 ml-2"><small>Colonia</small></label>
+            <span class="input-group-text ml-2"><i class="fas fa-vihara"></i></span>
+        </div>
+        <input type="text" class="form-control" name="colonia" id="colonia" value="{{old('colonia', $campus->colonia ?? '')}}" placeholder="Colonia">        
+    </div>
+
+    <div class="input-group mb-3 col-sm-3">
+        <!-- cp -->
+        <div class="input-group-prepend">
+            <label for="cp" class="mr-2"><small>C.P.</small></label>
+            <span class="input-group-text"><i class="fas fa-sort-amount-down"></i></i></span>
+        </div>
+        <input type="number" class="form-control" name="cp" id="cp" value="{{old('cp', $campus->cp ?? '')}}" placeholder="Código Postal">        
+    </div>
+
+    <div class="input-group mb-3 col-sm-4">
+        <!-- telefono -->
+        <div class="input-group-prepend">
+            <label for="telefono" class="mr-3"><small>Teléfono</small></label>
+            <span class="input-group-text ml-1"><i class="fas fa-phone-volume"></i></span>
+        </div>
+        <input type="tel" class="form-control" name="telefono" id="telefono" value="{{old('telefono', $campus->telefono ?? '')}}" placeholder="Teléfono">        
+    </div>
+
+    <div class="input-group mb-3 col-sm-3">
+        <!-- extension -->
+        <div class="input-group-prepend">
+            <label for="ext" class="mr-2"><small>Extensión</small></label>
+            <span class="input-group-text"><i class="fas fa-phone-square"></i></span>
+        </div>
+        <input type="number" class="form-control" name="ext" id="ext" value="{{old('ext', $campus->ext ?? '')}}" placeholder="Extensión">        
+    </div>
+</div>    

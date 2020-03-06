@@ -8,7 +8,10 @@
         <div class="icon">
             <i class="fas fa-building"></i>
         </div>
-        <a href="{{ route ('carreraUacj.show', $item['id']) }}" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+        <div class="small-box-footer col-sm-12">
+            <a href="{{route('uacj.edit',$item['id'])}}" class="tooltipsC col-sm-6" title="Editar campus"><i class="text-light fa fa-edit"></i></a>
+            <a href="{{ route ('carreraUacj.show', $item['id']) }}" class="tooltipsC col-sm-6" title="Ver carreras"> <i class="text-white fas fa-arrow-circle-right"></i></a>        
+        </div>
     </div>
     <!-- Small boxes (Stat box) -->
 </div>
