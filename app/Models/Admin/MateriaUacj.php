@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class MateriaUacj extends Model
 {
     public $table = "materia_uacj";
+    public function plan()
+    {
+        return $this->belongsToMany(PlanCarreraUacj::class, 'materia_plan_uacj', 'materia_id', 'plan_id');
+    }
+    
     public function carrera()
     {
-        return $this->belongsTo(CarreraUacj::class)->withTimestamps();
-    }
-
-    public function campus()
-    {
-        return $this->hasOneThrough(CampusUacj::class, CarreraUacj::class);
+        return $this->hasManyThrough(CarreraUacj::class, PlanCarreraUacj::class);
     }
 
     public function equivalencias()

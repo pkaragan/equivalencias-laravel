@@ -3,18 +3,6 @@
 UACJ
 @endsection
 
-@section("styles")
-<link href="{{asset("assets/js/jquery-nestable/jquery.nestable.css")}}" rel="stylesheet" type="text/css" />
-@endsection
-
-@section("scriptsPlugins")
-<script src="{{asset("assets/js/jquery-nestable/jquery.nestable.js")}}" type="text/javascript"></script>
-@endsection
-
-@section("scripts")
-<script src="{{asset("assets/pages/scripts/admin/menu/index.js")}}" type="text/javascript"></script>
-@endsection
-
 @section('contenido')
 <div class="row">
     <div class="col-lg-12">
@@ -26,16 +14,16 @@ UACJ
                 <a href="{{route('admin-index')}}" class="btn-sm btn-outline-dark card-tools mr-3 tooltipsC" title="Regresar"><i class="fas fa-arrow-left"></i></a>
             </div>
 
-            <section class="content mt-3">
-              <div class="container-fluid">
-                <div class="row">                                
-                    @foreach ($campus as $key => $item)
-                        @include("admin.uacj.uacj-item",["item" => $item])
-                    @endforeach
+            <div class="card card-solid">
+                <div class="card-body pb-0">
+                    <div class="row d-flex align-items-stretch">
+                        @foreach ($campus as $key => $item)
+                            @include("admin.uacj.uacj-item",["item" => $item])
+                        @endforeach
+                    </div>
                 </div>
-              </div>
-            </section>
-
+            </div>                   
+                  
         </div>
     </div>
 </div>

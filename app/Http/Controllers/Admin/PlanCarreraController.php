@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use DB;
-use App\Quotation;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ValidarCarreraUacj;
-use App\Models\Admin\CampusUacj;
-use App\Models\Admin\Carrera;
-use App\Models\Admin\CarreraUacj;
 use Illuminate\Http\Request;
 
-class CarreraUacjController extends Controller
+class PlanCarreraController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -20,7 +24,7 @@ class CarreraUacjController extends Controller
      */
     public function create()
     {
-        return view('admin.carrera-uacj.create');
+        //
     }
 
     /**
@@ -29,10 +33,9 @@ class CarreraUacjController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidarCarreraUacj $request)
+    public function store(Request $request)
     {
-        Carrera::create($request->all());
-        return redirect()->route('carrera.show',$request['campus_id'])->with('mensaje', 'Carrera creada con exito');
+        //
     }
 
     /**
@@ -42,10 +45,8 @@ class CarreraUacjController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {        
-        $carreras=CarreraUacj::where('campus_uacj_id',"=",$id)->get();
-        $carrera=CarreraUacj::findOrFail($id);
-        return view('admin.carrera-uacj.index', compact('carreras', 'carrera'));      
+    {
+        //
     }
 
     /**

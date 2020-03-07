@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarreraUacjTable extends Migration
+class CreateMateriaUacjTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreateCarreraUacjTable extends Migration
      */
     public function up()
     {
-        Schema::create('carrera_uacj', function (Blueprint $table) {
+        Schema::create('materia_uacj', function (Blueprint $table) {
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish2_ci';
             $table->bigIncrements('id');
-            $table->bigInteger('campus_uacj_id')->unsigned();
             $table->string('nombre');
-            $table->string('clave')->nullable();
+            $table->smallInteger('creditos');
+            $table->boolean('obligatoria');
+            $table->smallInteger('semestre');
             $table->timestamps();
-
-            $table->foreign('campus_uacj_id')->references('id')->on('campus_uacj')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
         });
     }
 
@@ -35,6 +32,6 @@ class CreateCarreraUacjTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carrera_uacj');
+        Schema::dropIfExists('materia_uacj');
     }
 }

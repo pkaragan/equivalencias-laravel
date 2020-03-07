@@ -24,6 +24,7 @@ class CampusUacjSeeder extends Seeder
             'cp'=>32584,
             'telefono'=>'656 688 4843',
             'ext'=>4817,
+            'imagen'=>'iit.jpg',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -40,6 +41,7 @@ class CampusUacjSeeder extends Seeder
             'cp'=>32584,
             'telefono'=>'656 688 4820',
             'ext'=>4923,
+            'imagen'=>'IADA.jpg',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -56,6 +58,7 @@ class CampusUacjSeeder extends Seeder
             'cp'=>32310,
             'telefono'=>'656 688 1800',
             'ext'=>1687,
+            'imagen'=>'icb.jpg',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -71,20 +74,22 @@ class CampusUacjSeeder extends Seeder
             'cp'=>32300,
             'telefono'=>'656 688 3800',
             'ext'=>3820,
+            'imagen'=>'icsa.jpg',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
         DB::table('campus_uacj')->insert([
             'id'=>5,
-            'nombre'=>'División Multidisciplinaria Nuevo Casas Grandes',
-            'iniciales'=>'DMNCG',
+            'nombre'=>'Nuevo Casas Grandes',
+            'iniciales'=>'NCG',
             'estado'=>'Chihuahua',
             'ciudad'=>'Nuevo Casas Grandes',
             'calle'=>'Av. Universidad',
             'numero'=>3003,
             'colonia'=>'Ejido Hidalgo',
             'cp'=>31803,
+            'imagen'=>'ncg.jpg',
             'telefono'=>'636 692 9800',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -92,8 +97,8 @@ class CampusUacjSeeder extends Seeder
 
         DB::table('campus_uacj')->insert([
             'id'=>6,
-            'nombre'=>'División Multidisciplinaria de Ciudad Universitaria',
-            'iniciales'=>'DMCU',
+            'nombre'=>'Ciudad Universitaria',
+            'iniciales'=>'CU',
             'estado'=>'Chihuahua',
             'ciudad'=>'Ciudad Juárez',
             'calle'=>'Av. Jose Jesús Macias Delgado',
@@ -101,6 +106,7 @@ class CampusUacjSeeder extends Seeder
             'colonia'=>'Ciudad Universitaria',
             'cp'=>32000,
             'telefono'=>'656 688 2100',
+            'imagen'=>'cu.jpg',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
@@ -115,6 +121,7 @@ class CampusUacjSeeder extends Seeder
             'colonia'=>'Ejido Cuauhtémoc',
             'cp'=>31600,
             'telefono'=>'625 128 1700',
+            'imagen'=>'dmc.jpg',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);

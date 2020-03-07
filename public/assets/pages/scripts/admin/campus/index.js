@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#uni-table').on('submit', '.form-eliminar', function(event){
+    $('#data-table').on('submit', '.form-eliminar', function(event){
         event.preventDefault();
         const form = $(this);
         swal({
@@ -36,5 +36,5 @@ $(document).ready(function () {
 
             }
         });
-    }
+    };    
 });

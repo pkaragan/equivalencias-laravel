@@ -9,6 +9,6 @@ $factory->define(Materia::class, function (Faker $faker) {
     return [
 
         'nombre'=>$faker->name,
-        'carrera_id'=>$faker->randomElement([1,5]),
+        'clave'=>$faker->word,
     ];
 });

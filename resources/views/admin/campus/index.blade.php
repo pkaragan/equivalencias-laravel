@@ -23,7 +23,7 @@ Universidades
 
                 <div class="card">
                   <div class="card-body p-3">
-                    <table class="table table-striped" id="uni-table">
+                    <table class="table table-striped" id="data-table">
                       <thead>
                         <tr>
                           <th style="width: 10px">#</th>
@@ -72,11 +72,9 @@ Universidades
   <script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
   <script src="{{asset("assets/$theme/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
 
-
-  <!-- page script -->
   <script>
     $(function () {
-      $('#uni-table').DataTable({
+      $('#data-table').DataTable({
         "paging": true,
         "lengthChange": true,
         "searching": true,

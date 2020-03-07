@@ -28,6 +28,7 @@ class CreateCampusUacjTable extends Migration
             $table->integer('cp')->nullable();
             $table->string('telefono')->nullable();
             $table->string('ext')->nullable();
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }
