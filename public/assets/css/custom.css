@@ -35,13 +35,11 @@ a.nesteable i.fa.fa-fw{
     color: rgb(23, 137, 175);
     margin-left: 16px;
 }
-input.permiso_rol{
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    background-color: aqua;
-    color: blue;
+
+button.eliminar-form{
+    padding: 4px 10px;    
+}
+
+button.eliminar-form:hover {
+   box-shadow: 10px 10px 10px grey !important;
 }

@@ -19,12 +19,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CampusUacjSeeder::class);        
         $this->call(CampusSeeder::class);        
         $this->call(CarreraSeeder::class);   
+        $this->call(CarreraUacjSeeder::class);   
 
         factory(App\Models\Seguridad\User::class, 20)->create();
 
         factory(App\Models\Admin\Admin::class, 15)->create();        
         factory(App\Models\Admin\Materia::class, 15)->create();
-        factory(App\Models\Admin\CarreraUacj::class, 15)->create();
         factory(App\Models\Admin\MateriaUacj::class, 15)->create();
         factory(App\Models\Admin\Alumno::class, 15)->create();
     }
