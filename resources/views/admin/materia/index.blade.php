@@ -1,5 +1,7 @@
 @extends("theme.$theme.layout")
 @section("titulo")
+
+{{dd($plan)}}
 {{ $carrera->nombre }} - {{$carrera->campus->universidad->nombre}} - {{$carrera->campus->nombre}}
 @endsection
 
@@ -42,8 +44,8 @@
                             <tr>                                                            
                                 <td>{{$key+1}}.</td>
                                 <td>{{$item["nombre"]}}</td>                    
-                                <td class="text-center"><a href="#" class="tooltipsC" title="Mostrar equivalencias" data-id="{{$item["id"]}}" data-nombre="{{$item["nombre"]}}" data-campus_id="{{$item["campus_id"]}}" data-toggle="modal" data-target="#modal-editar"><i class="text-muted fas fa-equals"></i></a></td>
-                                <td class="text-center"><a href="#" class="tooltipsC" title="Editar materia" data-id="{{$item["id"]}}" data-nombre="{{$item["nombre"]}}" data-carrera_id="{{$item["carrera_id"]}}" data-toggle="modal" data-target="#modal-editar"><i class="text-dark fa fa-edit"></i></a></td>
+                                <td class="text-center"><a href="#" class="tooltipsC" title="Mostrar equivalencias" data-id="{{$item["id"]}}" data-nombre="{{$item["nombre"]}}" data-campus_id="{{$item["id"]->$campus["id"]}}" data-toggle="modal" data-target="#modal-editar"><i class="text-muted fas fa-equals"></i></a></td>
+                                <td class="text-center"><a href="#" class="tooltipsC" title="Editar materia" data-id="{{$item["id"]}}" data-nombre="{{$item["nombre"]}}" data-carrera_id="{{$item["id"]->carrera["id"]}}" data-toggle="modal" data-target="#modal-editar"><i class="text-dark fa fa-edit"></i></a></td>
                                 <td class="text-center">
 
                                   <form action="{{route("materia.destroy", $item['id'])}}" class="d-inline form-eliminar" method="POST">

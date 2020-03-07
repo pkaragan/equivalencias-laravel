@@ -18,6 +18,7 @@ class CreateMateriaUacjTable extends Migration
             $table->collation = 'utf8mb4_spanish2_ci';
             $table->bigIncrements('id');
             $table->string('nombre');
+            $table->string('clave');
             $table->smallInteger('creditos');
             $table->boolean('obligatoria');
             $table->smallInteger('semestre');

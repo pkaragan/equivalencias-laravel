@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidarCarrera;
 use App\Models\Admin\Carrera;
 use App\Models\Admin\Materia;
+use App\Models\Admin\PlanCarrera;
 use Illuminate\Http\Request;
 
 class MateriaController extends Controller
@@ -40,9 +41,10 @@ class MateriaController extends Controller
      */
     public function show($id)
     {
-        $carrera = Carrera::with('materias')->findOrFail($id);
+        
+        $plan = PlanCarrera::with('materias')->findOrFail($id)->get();
 
-        return view('admin.materia.index', compact('carrera'));      
+        return view('admin.materia.index', compact('plan'));      
     }
     /**
      * Update the specified resource in storage.

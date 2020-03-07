@@ -3,6 +3,11 @@
 {{$universidad->nombre}} - {{ $campus->nombre}}
 @endsection
 
+@section('styles')
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables-bs4/css/dataTables.bootstrap4.css")}}">
+@endsection
+
 @section('contenido')
 <div class="row">
     <div class="col-lg-12">
@@ -20,7 +25,7 @@
             <div class="col-md-12 mt-2">
     
                 <div class="card">
-                  <div class="card-body p-0">
+                  <div class="card-body p-3">
                     <table class="table table-striped" id="carrera-table">
                       <thead>
                         <tr>
@@ -60,6 +65,45 @@
 </div> 
 @endsection
 
-@section('scripts')
-  <script src="{{asset("assets/pages/scripts/admin/carrera/index.js")}}" type="text/javascript"></script>  
+@section('scripts')  
+
+  <!-- DataTables -->
+  <script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
+  <script src="{{asset("assets/$theme/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
+
+  <script>
+    $(function () {
+      $('#carrera-table').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true,
+        "language":{
+          "info": "Numero total de registros:  <b> _TOTAL_ </b>",
+          "search": "Buscar",
+          "paginate": {
+            "next": "Siguiente",
+            "previous": "Anterior",
+          },
+          "lengthMenu": 'Mostrar   <select>  '+
+                        '<option value="10">10</option>'+
+                        '<option value="20">20</option>'+
+                        '<option value="30">30</option>'+
+                        '<option value="-1">Todos</option>'+
+                        '</select> registros',
+          "loadingRecords": "Cargando...",
+          "Processing": "Procesando...",
+          "emptyTable": "No hay datos",
+          "zeroRecords": "No hay coincidencias",
+          "infoEmpty": "",
+          "infoFiltered": ""
+          }
+
+      });
+    });
+  </script>
+
+  <script src="{{asset("assets/pages/scripts/admin/carrera/index.js")}}" type="text/javascript"></script>
 @endsection

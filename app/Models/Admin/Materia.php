@@ -10,14 +10,9 @@ class Materia extends Model
     protected $fillable = ['nombre', 'carrera_id'];
     protected $guarded = ['id'];
 
-    public function plan()
+    public function planesCarrera()
     {
-        return $this->belongsToMany(PlanCarrera::class, 'materia_plan');
-    }
-
-    public function carrera()
-    {
-        return $this->hasManyThrough(Carrera::class, PlanCarrera::class);
+        return $this->belongsToMany(PlanCarrera::class);
     }
 
     public function alumnos()

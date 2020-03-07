@@ -14,9 +14,14 @@ class Carrera extends Model
         return $this->hasMany(Alumno::class);
     }
 
+    public function planesCarrera()
+    {
+        return $this->hasMany(PlanCarrera::class);
+    }    
+
     public function materias()
     {
-        return $this->hasMany(Materia::class);
+        return $this->hasManyThrough(Materia::class, PlanCarrera::class);
     }    
 
     public function campus()
