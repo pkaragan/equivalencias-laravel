@@ -43,10 +43,9 @@ class CarreraController extends Controller
     {
         $campus = Campus::findOrFail($id);
 
-        $carreras=Carrera::where('campus_id',"=",$id)->get();
+        $carreras=Carrera::where('campus_id','=',$id)->get();
 
-        $universidad = Universidad::findOrFail($campus->universidad_id);
-        return view('admin.carrera.index', compact('carreras', 'campus', 'universidad'));      
+        return view('admin.carrera.index', compact('carreras', 'campus'));
     }
 
 
@@ -60,7 +59,7 @@ class CarreraController extends Controller
     public function update(ValidarCarrera $request)
     {
         $carrera=Carrera::findOrFail($request->id);
-        $carrera->update($request->all());        
+        $carrera->update($request->all());
         return redirect()->route('carrera.show',$request['campus_id'])->with('mensaje', 'Carrera actualizada con exito');
     }
 
@@ -72,10 +71,10 @@ class CarreraController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        if ($request->ajax()) {               
-              
-            if (Carrera::destroy($id)) {     
-                return response()->json(['mensaje' => 'ok']);         
+        if ($request->ajax()) {
+
+            if (Carrera::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
             }else{
                 return response()->json(['mensaje' => 'ng']);
             }

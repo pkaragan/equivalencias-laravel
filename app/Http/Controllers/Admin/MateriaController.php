@@ -41,10 +41,11 @@ class MateriaController extends Controller
      */
     public function show($id)
     {
+        $carrera = Carrera::findOrFail($id);
+        $planes = PlanCarrera::where('carrera_id', $carrera->id)->get();
 
-        $plan = PlanCarrera::with('materias')->get();
+        return view('admin.materia.index', compact('carrera', 'planes'));
 
-        return view('admin.materia.index', compact('plan'));
     }
     /**
      * Update the specified resource in storage.

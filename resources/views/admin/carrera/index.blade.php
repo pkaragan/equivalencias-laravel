@@ -1,6 +1,7 @@
 @extends("theme.$theme.layout")
 @section("titulo")
-{{$universidad->nombre}} - {{ $campus->nombre}}
+
+{{$campus->universidad->nombre}} - {{ $campus->nombre}}
 @endsection
 
 @section('styles')
@@ -13,17 +14,17 @@
     <div class="col-lg-12">
         @include('includes.mensaje')
         <div class="card">
-            <div class="card-header without-border">              
-                <h3 class="card-title"><b>{{ $universidad->nombre }}</b> - {{ $campus->nombre }} </h3>
+            <div class="card-header without-border">
+                <h3 class="card-title"><b>{{ $campus->universidad->nombre }}</b> - {{ $campus->nombre }} </h3>
                 <a href="#" class="btn btn-info btn-sm card-tools mr-3" data-toggle="modal" data-target="#modal-agregar">Agregar Carrera</a>
                 <a href="{{route('campus.index')}}" class="btn-sm btn-outline-dark card-tools mr-3 tooltipsC" title="Regresar"><i class="fas fa-arrow-left"></i></a>
             </div>
 
-            @include('admin.carrera.create', ['nombre' => $universidad->nombre], ['campus' => $campus])    
-            @include('admin.carrera.edit', ['nombre' => $universidad->nombre], ['campus' => $campus])            
+            @include('admin.carrera.create', ['nombre' => $campus->universidad->nombre], ['campus' => $campus])
+            @include('admin.carrera.edit', ['nombre' => $campus->universidad->nombre], ['campus' => $campus])
 
             <div class="col-md-12 mt-2">
-    
+
                 <div class="card">
                   <div class="card-body p-3">
                     <table class="table table-striped" id="carrera-table">
@@ -38,9 +39,9 @@
                       </thead>
                       <tbody>
                         @foreach ($carreras as $key => $item)
-                            <tr>                                                            
+                            <tr>
                                 <td>{{$key+1}}.</td>
-                                <td>{{$item["nombre"]}}</td>                          
+                                <td>{{$item["nombre"]}}</td>
                                 <td class="text-center"><a href="{{route('materia.show', $item["id"])}}" class="tooltipsC" title="Ver Materias"><i class="text-muted fas fa-book"></i></a></td>
                                 <td class="text-center"><a href="#" class="tooltipsC" title="Editar carrera" data-id="{{$item["id"]}}" data-nombre="{{$item["nombre"]}}" data-campus_id="{{$item["campus_id"]}}" data-toggle="modal" data-target="#modal-editar"><i class="text-dark fa fa-edit"></i></a></td>
                                 <td class="text-center">
@@ -50,7 +51,7 @@
                                       <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro"><i class="text-danger fa fa-trash"></i></button>
                                   </form>
                                 </td>
-                            </tr>                                              
+                            </tr>
                         @endforeach
                       </tbody>
                     </table>
@@ -59,13 +60,13 @@
                 </div>
                 <!-- /.card -->
               </div>
-              <!-- /.col -->            
+              <!-- /.col -->
         </div>
     </div>
-</div> 
+</div>
 @endsection
 
-@section('scripts')  
+@section('scripts')
 
   <!-- DataTables -->
   <script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
