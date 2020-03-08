@@ -47,6 +47,6 @@ $(document).ready(function () {
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #nombre').val(nombre);        
         modal.find('.modal-body #carrera_id').val(carrera_id);
-    });
-
+    });    
+    
 });

@@ -8,6 +8,7 @@ use App\Models\Admin\Carrera;
 use App\Models\Admin\Materia;
 use App\Models\Admin\PlanCarrera;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MateriaController extends Controller
 {
@@ -80,4 +81,5 @@ class MateriaController extends Controller
             abort(404);
         }
     }
+    
 }
