@@ -41,10 +41,10 @@ class MateriaController extends Controller
      */
     public function show($id)
     {
-        
-        $plan = PlanCarrera::with('materias')->findOrFail($id)->get();
 
-        return view('admin.materia.index', compact('plan'));      
+        $plan = PlanCarrera::with('materias')->get();
+
+        return view('admin.materia.index', compact('plan'));
     }
     /**
      * Update the specified resource in storage.
@@ -56,7 +56,7 @@ class MateriaController extends Controller
     public function update(ValidarCarrera $request)
     {
         $materia=Materia::findOrFail($request->id);
-        $materia->update($request->all());        
+        $materia->update($request->all());
         return redirect()->route('materia.show',$request['carrera_id'])->with('mensaje', 'Materia actualizada con exito');
     }
 
@@ -68,10 +68,10 @@ class MateriaController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        if ($request->ajax()) {               
-              
-            if (Materia::destroy($id)) {     
-                return response()->json(['mensaje' => 'ok']);         
+        if ($request->ajax()) {
+
+            if (Materia::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
             }else{
                 return response()->json(['mensaje' => 'ng']);
             }

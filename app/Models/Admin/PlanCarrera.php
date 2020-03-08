@@ -10,10 +10,10 @@ class PlanCarrera extends Model
     public function carrera()
     {
         return $this->belongsTo(Carrera::class);
-    } 
+    }
 
     public function materias()
     {
-        return $this->hasMany(PlanCarrera::class);
+        return $this->belongsToMany(Materia::class);
     }
 }

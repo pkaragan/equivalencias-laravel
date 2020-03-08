@@ -18,9 +18,9 @@ class MateriaPlanSeeder extends Seeder
         $materia=Materia::orderBy('id')->get();
         $plan=PlanCarrera::orderBy('id')->pluck('id')->toArray();
         foreach($materia as $key){
-            DB::table('materia_plan')->insert([
+            DB::table('materia_plan_carrera')->insert([
                 'materia_id'=>$key['id'],
-                'plan_id'=>$faker->randomElement($plan),
+                'plan_carrera_id'=>$faker->randomElement($plan),
             ]);
         }
     }
