@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::resource('campus', 'CampusController');    
     /*RUTAS DE CARRERA*/
     Route::resource('carrera', 'CarreraController');    
-    /*RUTAS DE MATERIA*/
+    /*RUTAS DE MATERIA*/    
     Route::resource('materia', 'MateriaController');    
     /*RUTAS DE UACJ*/                      
     Route::resource('uacj', 'CampusUacjController');    
@@ -37,4 +37,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::resource('equivalencias', 'EquivalenciasController');
     /*RUTAS DE ADMINISTRACION*/
     Route::resource('admin', 'AdminController');
+    /*RUTAS DE AJAX*/
+    Route::post('datatablematerias', 'AjaxController@dataTableMaterias')->name('datatablematerias');    
 });

@@ -1,19 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\Carrera;
+use App\Http\Controllers\Controller;
 use App\Models\Admin\Materia;
-use App\Models\Admin\PlanCarrera;
 use Illuminate\Http\Request;
 
-class DataTableMateriasController extends Controller
+class AjaxController extends Controller
 {
-    public function index(){
-
-    }
-
-    public function fetch(Request $request)
+    public function dataTableMaterias(Request $request)
     {
         $plan = $request->get('plan');
         $materias = Materia::join('materia_plan', 'materia.id', '=', 'materia_plan.materia_id')
@@ -22,6 +17,6 @@ class DataTableMateriasController extends Controller
                 ->get();
 
 
-        return $materias->toJs
+        return $materias;
     }
 }

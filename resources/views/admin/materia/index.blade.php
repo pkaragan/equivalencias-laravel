@@ -44,34 +44,14 @@
                     <table class="table table-striped" id="materia-table">
                       <thead>
                         <tr>
-                          <th style="width: 10px">#</th>
+                          <th style="width: 10px">id</th>
                           <th>Clave</th>
-                          <th>Materia</th>
+                          <th>Nombre</th>
                           <th class="text-center" style="width: 130px">Mostrar equivalencias</th>
                           <th class="text-center" style="width: 130px">Editar</th>
                           <th class="text-center" style="width: 130px">Eliminar</th>
                         </tr>
-                      </thead>
-                      <tbody>
-                        <div class="materias-ajax" name="materias-ajax" id="materias-ajax"></div>
-{{--
-                            @foreach ($materias as $key => $item)
-                            <tr>
-                                <td>{{$key+1}}.</td>
-                                <td>{{$item["clave"]}}</td>
-                                <td>{{$item["nombre"]}}</td>
-                                <td class="text-center"><a href="#" class="tooltipsC" title="Ver carreras"><i class="text-muted fa fa-graduation-cap"></i></a></td>
-                                <td class="text-center"><a href="#" class="tooltipsC" title="Editar campus"><i class="text-dark fa fa-edit"></i></a></td>
-                                <td class="text-center">
-                                  <form action="#" class="d-inline form-eliminar" method="POST">
-                                      @csrf @method("delete")
-                                      <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro"><i class="text-danger fa fa-trash"></i></button>
-                                  </form>
-                              </td>
-                            </tr>
-                            @endforeach                   
-                            --}}                                         
-                      </tbody>
+                      </thead>                      
                     </table>
                   </div>
                   <!-- /.card-body -->
@@ -95,48 +75,95 @@
   <script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
   <script src="{{asset("assets/$theme/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
 
-
+  <script src="{{asset("assets/pages/scripts/admin/materia/index.js")}}" type="text/javascript"></script>
   <script>
 
-    $(function () {
-      $('#materia-table').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-        "language":{
-          "info": "Numero total de registros:  <b> _TOTAL_ </b>",
-          "search": "Buscar",
-          "paginate": {
-            "next": "Siguiente",
-            "previous": "Anterior",
-          },
-          "lengthMenu": 'Mostrar   <select>  '+
-                        '<option value="10">10</option>'+
-                        '<option value="20">20</option>'+
-                        '<option value="30">30</option>'+
-                        '<option value="-1">Todos</option>'+
-                        '</select> registros',
-          "loadingRecords": "Cargando...",
-          "Processing": "Procesando...",
-          "emptyTable": "No hay datos",
-          "zeroRecords": "No hay coincidencias",
-          "infoEmpty": "",
-          "infoFiltered": ""
-          }
-
+    $(document).ready(function () {
+        //Initialize Select2 Elements
+        $('#select-plan').select2({
+            theme: 'classic'
+        }).on('select2:select', function(e) {
+            Select2Cargar(e.params.data['id']);
+        });      
+        
+        Select2Cargar($('#select-plan').data('id'));
+        
       });
-    });
-    
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'classic',
-    });
-  </script>
-    
+  
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')     
+          }
+      }); 
 
-  <script src="{{asset("assets/pages/scripts/admin/materia/index.js")}}" type="text/javascript"></script>
+      function Select2Cargar(id){
+    console.log(id);
+        $.ajax({
+          type: 'POST',
+          url: '{{route("datatablematerias")}}',
+          data: {
+              "_token": "{{ csrf_token() }}",
+              'plan': id, 
+          },
+          success: function(response) {
+            console.log(response);
+            $(function () {
+              $('#materia-table').DataTable({
+                "destroy": true,
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "data": response,
+                    "columns": [
+                                  { "data": "clave" },
+                                  { "data": "nombre" },
+                                  { "data": "id" },
+                                  {"defaultContent": "<button type='button' class='equivalencia btn-accion-tabla tooltipsC align-center' title='Ver Equivalencias'><i class='text-muted fas fa-equals'></i></button>"
+                                }
+                                ],
+                "language":{
+                  "info": "Numero total de registros:  <b> _TOTAL_ </b>",
+                  "search": "Buscar",
+                  "paginate": {
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                  },
+                  "lengthMenu": 'Mostrar   <select>  '+
+                                '<option value="10">10</option>'+
+                                '<option value="20">20</option>'+
+                                '<option value="30">30</option>'+
+                                '<option value="-1">Todos</option>'+
+                                '</select> registros',
+                  "loadingRecords": "Cargando...",
+                  "Processing": "Procesando...",
+                  "emptyTable": "No hay datos",
+                  "zeroRecords": "No hay coincidencias",
+                  "infoEmpty": "",
+                  "infoFiltered": ""
+                  }
+
+              });
+
+              data_equivalencia("#materia-table tbody");
+            });
+                                  
+          },
+          statusCode: {
+            404: function() {
+                alert('web not found');
+            }
+          },
+          error:function(x,xs,xt){
+              //nos dara el error si es que hay alguno
+              window.open(JSON.stringify(x));
+              //alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
+          }
+      });      
+  }     
+    
+  </script>  
   
 @endsection  

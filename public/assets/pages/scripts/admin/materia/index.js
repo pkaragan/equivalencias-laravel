@@ -47,6 +47,16 @@ $(document).ready(function () {
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #nombre').val(nombre);        
         modal.find('.modal-body #carrera_id').val(carrera_id);
-    });    
+    });        
     
 });
+
+var data_equivalencia= function(table){
+    $(document).on("click",".equivalencia",function(){
+        var data = table.row($(this).parents("tr") ).data();
+        var idMateria = $("#idMateria").val( data.idMateria ),
+            clave = $("#clave").val( data.clave),
+            nombre = $("#nombre").val( data.nombre);
+            console.log(data);
+    });
+}
