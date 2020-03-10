@@ -10,6 +10,6 @@ class Admin extends Model
     public $table = "admin";
     public function user()
     {
-        return $this->belongsTo(User::class)->withTimeStamps();
+        return $this->hasOneThrough(User::class, TipoUser::class)->withTimeStamps();
     }
 }

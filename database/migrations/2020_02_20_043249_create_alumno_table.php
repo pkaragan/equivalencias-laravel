@@ -21,7 +21,6 @@ class CreateAlumnoTable extends Migration
             $table->bigInteger('user_id')->unsigned();  
             $table->bigInteger('carrera_id')->unsigned();  
             $table->smallInteger('semestre');
-            $table->string('nombre');
 
             $table->timestamps();
 

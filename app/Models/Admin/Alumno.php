@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Seguridad\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Alumno extends Model
@@ -16,4 +17,9 @@ class Alumno extends Model
     {
         return $this->belongsTo(Carrera::class)->withTimestamps();
     }        
+
+    public function user()
+    {
+        return $this->hasOneThrough(User::class, TipoUser::class)->withTimeStamps();
+    }
 }

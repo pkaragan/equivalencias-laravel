@@ -44,7 +44,7 @@
                     <table class="table table-striped" id="materia-table">
                       <thead>
                         <tr>
-                          <th style="width: 10px">id</th>
+                          <th style="width: 10px">#</th>
                           <th>Clave</th>
                           <th>Nombre</th>
                           <th class="text-center" style="width: 130px">Mostrar equivalencias</th>
@@ -97,7 +97,7 @@
       }); 
 
       function Select2Cargar(id){
-    console.log(id);
+      console.log(id);
         $.ajax({
           type: 'POST',
           url: '{{route("datatablematerias")}}',
@@ -106,9 +106,9 @@
               'plan': id, 
           },
           success: function(response) {
-            console.log(response);
             $(function () {
-              $('#materia-table').DataTable({
+    var table = $('#materia-table').DataTable({
+                "order": [[ 1, 'asc' ]],
                 "destroy": true,
                 "paging": true,
                 "lengthChange": true,
@@ -118,11 +118,12 @@
                 "autoWidth": true,
                 "data": response,
                     "columns": [
+                                  { "data": "DT_RowId" },
                                   { "data": "clave" },
-                                  { "data": "nombre" },
-                                  { "data": "id" },
-                                  {"defaultContent": "<button type='button' class='equivalencia btn-accion-tabla tooltipsC align-center' title='Ver Equivalencias'><i class='text-muted fas fa-equals'></i></button>"
-                                }
+                                  { "data": "nombre" },                                  
+                                  {"defaultContent": "<button type='button' class='equivalencia btn-accion-tabla tooltipsC align-center' title='Ver Equivalencias'><i class='text-muted fas fa-equals'></i></button>"},
+                                  {"defaultContent": "<button type='button' class='editar btn-accion-tabla tooltipsC align-center' title='Editar materia'><i class='text-dark fas fa-edit'></i></button>"},
+                                  {"defaultContent": "<button type='button' class='eliminar btn-accion-tabla tooltipsC align-center' title='Eliminar materia'><i class='text-danger fas fa-trash'></i></button>"}
                                 ],
                 "language":{
                   "info": "Numero total de registros:  <b> _TOTAL_ </b>",
@@ -147,7 +148,13 @@
 
               });
 
-              data_equivalencia("#materia-table tbody");
+              table.on( 'order.dt search.dt', function () {
+                  table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                      cell.innerHTML = i+1;
+                  } );
+              } ).draw();
+
+              datatable_materias(table);
             });
                                   
           },

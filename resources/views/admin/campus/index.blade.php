@@ -49,7 +49,7 @@ Universidades
                                       @csrf @method("delete")
                                       <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro"><i class="text-danger fa fa-trash"></i></button>
                                   </form>
-                              </td>
+                                </td>
                             </tr>
                         @endforeach
                       </tbody>

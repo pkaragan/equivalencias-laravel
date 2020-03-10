@@ -51,12 +51,31 @@ $(document).ready(function () {
     
 });
 
-var data_equivalencia= function(table){
+var datatable_materias= function(table){
     $(document).on("click",".equivalencia",function(){
-        var data = table.row($(this).parents("tr") ).data();
-        var idMateria = $("#idMateria").val( data.idMateria ),
-            clave = $("#clave").val( data.clave),
-            nombre = $("#nombre").val( data.nombre);
-            console.log(data);
-    });
+        var detailRows = [];
+     
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+        var idx = $.inArray( tr.attr('id'), detailRows );
+        console.log(tr.attr('id'));
+    });    
+
+    $(document).on("click",".editar",function(){
+        var detailRows = [];
+     
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+        var idx = $.inArray( tr.attr('id'), detailRows );
+        console.log(tr.attr('id'));
+    });    
+
+    $(document).on("click",".eliminar",function(){
+        var detailRows = [];
+     
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+        var idx = $.inArray( tr.attr('id'), detailRows );
+        console.log(tr.attr('id'));
+    });    
 }

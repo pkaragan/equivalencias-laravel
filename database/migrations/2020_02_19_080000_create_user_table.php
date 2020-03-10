@@ -23,12 +23,18 @@ class CreateUserTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('telefono');
-            $table->string('direccion');
+            $table->string('estado');
+            $table->string('ciudad');
+            $table->string('calle')->nullable();
+            $table->integer('numero')->nullable();
+            $table->string('numero_int')->nullable();
+            $table->string('colonia')->nullable();
+            $table->integer('cp')->nullable();
             $table->date('fecha_nac');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('estado');
+            $table->boolean('status');
             $table->rememberToken();
             $table->timestamps();
             

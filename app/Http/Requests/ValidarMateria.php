@@ -25,7 +25,7 @@ class ValidarMateria extends FormRequest
     {
         return [
             'nombre' => 'required|string|max:100',
-            'nombre' => 'required|string|max:20',
+            'clave' => 'required|string|max:20',
         ];
     }
 }

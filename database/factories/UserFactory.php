@@ -24,12 +24,18 @@ $factory->define(User::class, function (Faker $faker) {
         'nombre' => $faker->name,
         'apellido' => $faker->lastName,
         'telefono' => $faker->phoneNumber,
-        'direccion' => $faker->address,
+        'estado' => $faker->state,
+        'ciudad' => $faker->city,
+        'calle' => $faker->streetAddress,
+        'numero' => $faker->numberBetween(199,9999),
+        'colonia' => $faker->name,
+        'cp' => $faker->numberBetween(00000,99999),
         'fecha_nac' => $faker->date(),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),               
-        'estado'=>$faker->boolean(),
+        'status'=>1,
+
     ];
 });
