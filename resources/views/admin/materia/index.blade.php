@@ -117,34 +117,34 @@
                 "info": true,
                 "autoWidth": true,
                 "data": response,
-                    "columns": [
-                                  { "data": "DT_RowId" },
-                                  { "data": "clave" },
-                                  { "data": "nombre" },                                  
-                                  {"defaultContent": "<button type='button' class='equivalencia btn-accion-tabla tooltipsC align-center' title='Ver Equivalencias'><i class='text-muted fas fa-equals'></i></button>"},
-                                  {"defaultContent": "<button type='button' class='editar btn-accion-tabla tooltipsC align-center' title='Editar materia'><i class='text-dark fas fa-edit'></i></button>"},
-                                  {"defaultContent": "<button type='button' class='eliminar btn-accion-tabla tooltipsC align-center' title='Eliminar materia'><i class='text-danger fas fa-trash'></i></button>"}
-                                ],
+                "columns": [
+                              { "data": "DT_RowId" },
+                              { "data": "clave" },
+                              { "data": "nombre" },                                  
+                              {"defaultContent": "<button type='button' class='equivalencia btn-accion-tabla tooltipsC align-center' title='Ver Equivalencias'><i class='text-muted fas fa-equals'></i></button>"},
+                              {"defaultContent": "<button type='button' class='editar btn-accion-tabla tooltipsC align-center' title='Editar materia'><i class='text-dark fas fa-edit'></i></button>"},
+                              {"defaultContent": "<button type='button' class='eliminar btn-accion-tabla tooltipsC align-center' title='Eliminar materia'><i class='text-danger fas fa-trash'></i></button>"}
+                            ],
                 "language":{
-                  "info": "Numero total de registros:  <b> _TOTAL_ </b>",
-                  "search": "Buscar",
-                  "paginate": {
-                    "next": "Siguiente",
-                    "previous": "Anterior",
-                  },
-                  "lengthMenu": 'Mostrar   <select>  '+
-                                '<option value="10">10</option>'+
-                                '<option value="20">20</option>'+
-                                '<option value="30">30</option>'+
-                                '<option value="-1">Todos</option>'+
-                                '</select> registros',
-                  "loadingRecords": "Cargando...",
-                  "Processing": "Procesando...",
-                  "emptyTable": "No hay datos",
-                  "zeroRecords": "No hay coincidencias",
-                  "infoEmpty": "",
-                  "infoFiltered": ""
-                  }
+                            "info": "Numero total de registros:  <b> _TOTAL_ </b>",
+                            "search": "Buscar",
+                            "paginate": {
+                                          "next": "Siguiente",
+                                          "previous": "Anterior",
+                                        },
+                            "lengthMenu": 'Mostrar   <select>  '+
+                                          '<option value="10">10</option>'+
+                                          '<option value="20">20</option>'+
+                                          '<option value="30">30</option>'+
+                                          '<option value="-1">Todos</option>'+
+                                          '</select> registros',
+                            "loadingRecords": "Cargando...",
+                            "Processing": "Procesando...",
+                            "emptyTable": "No hay datos",
+                            "zeroRecords": "No hay coincidencias",
+                            "infoEmpty": "",
+                            "infoFiltered": ""
+                            }
 
               });
 

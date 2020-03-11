@@ -25,6 +25,7 @@ class LoginController extends Controller
     {      
         if ($user['tipo_user_id']==1) {
             $user->setSession($user);
+            return redirect('admin/');
         } else {
             $this->guard()->logout();
             $request->session()->invalidate();
@@ -35,6 +36,17 @@ class LoginController extends Controller
     public function username()
     {
         return 'usuario';
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return $this->loggedOut($request) ?: redirect('seguridad/login');
     }
    
 }
