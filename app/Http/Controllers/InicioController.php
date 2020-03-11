@@ -13,7 +13,11 @@ class InicioController extends Controller
      */
     public function index()
     {
-        return view('inicio');
+        if (session('tipo_user_id')==1) {
+            return redirect('admin/');
+        } else {            
+            return redirect()->route('logout')->with('mensaje', 'No tiene permisos para esta ruta');
+        }
     }
 
     /**
