@@ -21,6 +21,10 @@
                 <a href="#" class="btn btn-info btn-sm card-tools mr-3" data-toggle="modal" data-target="#modal-agregar">Agregar Materia</a>
                 <a href="{{route('carrera.show',$carrera->campus->id)}}" class="btn-sm btn-outline-dark card-tools mr-3 tooltipsC" title="Regresar"><i class="fas fa-arrow-left"></i></a>
             </div>
+
+            @include('admin.materia.create', ['nombre' => $carrera->nombre])
+            @include('admin.materia.edit', ['nombre' => $carrera->nombre])
+
             <!-- listado de universidades 'Select2' -->
             <div id="lista-planes" class="container-fluid col-sm-12 border-2 border border-light shadow rounded">
               <div class="input-group m-3">
@@ -30,7 +34,7 @@
                   <select class="select2bs4 col-sm-3" name="select-plan" id="select-plan">            
                       <option value=0>Seleccione el plan</option>
                       @foreach ($planes as $item)
-                          <option value={{$item['id']}} {{ old('select-plan') == $item['id'] ? 'selected' : '' }} >{{$item['clave']}}</option>
+                          <option value={{$item['id']}}>{{$item['clave']}}</option>
                       @endforeach
                   </select>
               </div>
@@ -80,8 +84,9 @@
 
     $(document).ready(function () {
         //Initialize Select2 Elements
+        $('#select-plan').val(0);
         $('#select-plan').select2({
-            theme: 'classic'
+            theme: 'classic',
         }).on('select2:select', function(e) {
             Select2Cargar(e.params.data['id']);
         });      
@@ -122,7 +127,7 @@
                               { "data": "clave" },
                               { "data": "nombre" },                                  
                               {"defaultContent": "<button type='button' class='equivalencia btn-accion-tabla tooltipsC align-center' title='Ver Equivalencias'><i class='text-muted fas fa-equals'></i></button>"},
-                              {"defaultContent": "<button type='button' class='editar btn-accion-tabla tooltipsC align-center' title='Editar materia'><i class='text-dark fas fa-edit'></i></button>"},
+                              {"defaultContent": "<button type='button' class='editar btn-accion-tabla tooltipsC align-center' title='Editar materia' data-toggle='modal' data-target='#modal-editar'><i class='text-dark fas fa-edit'></i></button>"},
                               {"defaultContent": "<button type='button' class='eliminar btn-accion-tabla tooltipsC align-center' title='Eliminar materia'><i class='text-danger fas fa-trash'></i></button>"}
                             ],
                 "language":{
@@ -155,6 +160,7 @@
               } ).draw();
 
               datatable_materias(table);
+              datatable_materias_eliminar(table, {{route('materia.show')}});
             });
                                   
           },

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidarCarrera;
+use App\Http\Requests\ValidarMateria;
 use App\Models\Admin\Carrera;
 use App\Models\Admin\Materia;
 use App\Models\Admin\PlanCarrera;
@@ -55,11 +56,11 @@ class MateriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidarCarrera $request)
+    public function update(ValidarMateria $request)
     {
         $materia=Materia::findOrFail($request->id);
         $materia->update($request->all());
-        return redirect()->route('materia.show',$request['carrera_id'])->with('mensaje', 'Materia actualizada con exito');
+        return redirect()->back();
     }
 
     /**

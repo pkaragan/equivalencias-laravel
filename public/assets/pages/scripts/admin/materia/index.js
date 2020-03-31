@@ -36,46 +36,61 @@ $(document).ready(function () {
 
             }
         });
-    }
-    
-    $('#modal-editar').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) 
-        var id = button.data('id') 
-        var nombre = button.data('nombre') 
-        var carrera_id = button.data('carrera_id') 
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #nombre').val(nombre);        
-        modal.find('.modal-body #carrera_id').val(carrera_id);
-    });        
+    }   
     
 });
 
 var datatable_materias= function(table){
     $(document).on("click",".equivalencia",function(){
-        var detailRows = [];
-     
         var tr = $(this).closest('tr');
-        var row = table.row( tr );
-        var idx = $.inArray( tr.attr('id'), detailRows );
-        console.log(tr.attr('id'));
+        var id = tr.attr('id');
+        var clave = document.getElementById(id).children[1].innerHTML;
+        var nombre = document.getElementById(id).children[2].innerHTML;
+
+        console.log(clave);
     });    
 
     $(document).on("click",".editar",function(){
-        var detailRows = [];
-     
         var tr = $(this).closest('tr');
-        var row = table.row( tr );
-        var idx = $.inArray( tr.attr('id'), detailRows );
-        console.log(tr.attr('id'));
+        var id = tr.attr('id');
+        var clave = document.getElementById(id).children[1].innerHTML;
+        var nombre = document.getElementById(id).children[2].innerHTML;
+
+        console.log(id, clave, nombre);
+
+
+        var modal = $('#modal-editar')
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #nombre').val(nombre);        
+        modal.find('.modal-body #clave').val(clave);
+
     });    
 
     $(document).on("click",".eliminar",function(){
-        var detailRows = [];
-     
         var tr = $(this).closest('tr');
-        var row = table.row( tr );
-        var idx = $.inArray( tr.attr('id'), detailRows );
-        console.log(tr.attr('id'));
-    });    
+        var id = tr.attr('id');
+        var clave = document.getElementById(id).children[1].innerHTML;
+        var nombre = document.getElementById(id).children[2].innerHTML;
+
+        console.log(id, clave, nombre);
+
+        $('#materia-table').on('submit', '.form-eliminar', function(event){
+            event.preventDefault();
+            const form = $(this);
+            swal({
+                title: '¿ Está seguro que desea eliminar el registro ?',
+                text: "Esta acción no se puede deshacer!",
+                icon: 'warning',
+                buttons: {
+                    cancel: "Cancelar",
+                    confirm: "Aceptar"
+                },
+            }).then((value) => {
+                if (value) {
+                    ajaxRequest(form.serialize(), form.attr('action'), 'eliminarMateria', form);
+                }
+            });
+        });
+    });   
+    
 }
